@@ -5,12 +5,54 @@
 //  Created by Edward Luo on 2021-01-09.
 //
 
+import Combine
 import SwiftUI
 
 struct ContentView: View {
+    @State var selection = 0
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        TabView(selection: $selection) {
+            Text("Home Tab")
+                .font(.system(size: 30, weight: .bold, design: .rounded))
+                .tabItem {
+                    Image(systemName: "house.fill")
+                    Text("Home")
+                }
+                .tag(0)
+         
+            Text("Bookmark Tab")
+                .font(.system(size: 30, weight: .bold, design: .rounded))
+                .tabItem {
+                    Image(systemName: "magnifyingglass.circle")
+                    Text("Explore")
+                }
+                .tag(1)
+            
+            Text("Add Skill Tab")
+                .font(.system(size: 30, weight: .bold, design: .rounded))
+                .tabItem {
+                    Image(systemName: "pencil.circle")
+                    Text("Create")
+                }
+                .tag(2)
+         
+            Text("Social Tab")
+                .font(.system(size: 30, weight: .bold, design: .rounded))
+                .tabItem {
+                    Image(systemName: "person.2.circle")
+                    Text("Social")
+                }
+                .tag(3)
+         
+            Text("Profile Tab")
+                .font(.system(size: 30, weight: .bold, design: .rounded))
+                .tabItem {
+                    Image(systemName: "person.crop.circle")
+                    Text("Profile")
+                }
+                .tag(4)
+        }
     }
 }
 
