@@ -15,6 +15,8 @@
 		E9A407F225AA53660073C12A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9A407F025AA53660073C12A /* LaunchScreen.storyboard */; };
 		E9A407FD25AA53660073C12A /* nwHacks2021Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A407FC25AA53660073C12A /* nwHacks2021Tests.swift */; };
 		E9A4080825AA53670073C12A /* nwHacks2021UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A4080725AA53670073C12A /* nwHacks2021UITests.swift */; };
+		E9C8C03625AA65AE005B2580 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C03525AA65AE005B2580 /* HomeView.swift */; };
+		E9C8C03F25AA7297005B2580 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C03E25AA7297005B2580 /* Skill.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		E9A4080325AA53670073C12A /* nwHacks2021UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nwHacks2021UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A4080725AA53670073C12A /* nwHacks2021UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nwHacks2021UITests.swift; sourceTree = "<group>"; };
 		E9A4080925AA53670073C12A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9C8C03525AA65AE005B2580 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E9C8C03E25AA7297005B2580 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 		E9A407E425AA53610073C12A /* nwHacks2021 */ = {
 			isa = PBXGroup;
 			children = (
+				E9C8C03D25AA728A005B2580 /* Models */,
+				E9C8C03025AA6565005B2580 /* Views */,
 				E9A407E525AA53610073C12A /* AppDelegate.swift */,
 				E9A407E725AA53610073C12A /* SceneDelegate.swift */,
 				E9A407E925AA53610073C12A /* ContentView.swift */,
@@ -134,6 +140,54 @@
 				E9A4080925AA53670073C12A /* Info.plist */,
 			);
 			path = nwHacks2021UITests;
+			sourceTree = "<group>";
+		};
+		E9C8C03025AA6565005B2580 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E9C8C03425AA6589005B2580 /* Profile */,
+				E9C8C03325AA6580005B2580 /* Social */,
+				E9C8C03225AA657A005B2580 /* Explore */,
+				E9C8C03125AA6573005B2580 /* Home */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E9C8C03125AA6573005B2580 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E9C8C03525AA65AE005B2580 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E9C8C03225AA657A005B2580 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		E9C8C03325AA6580005B2580 /* Social */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Social;
+			sourceTree = "<group>";
+		};
+		E9C8C03425AA6589005B2580 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		E9C8C03D25AA728A005B2580 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E9C8C03E25AA7297005B2580 /* Skill.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +321,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9A407E625AA53610073C12A /* AppDelegate.swift in Sources */,
+				E9C8C03625AA65AE005B2580 /* HomeView.swift in Sources */,
+				E9C8C03F25AA7297005B2580 /* Skill.swift in Sources */,
 				E9A407E825AA53610073C12A /* SceneDelegate.swift in Sources */,
 				E9A407EA25AA53610073C12A /* ContentView.swift in Sources */,
 			);

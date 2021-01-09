@@ -13,8 +13,10 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $selection) {
-            Text("Home Tab")
-                .font(.system(size: 30, weight: .bold, design: .rounded))
+            NavigationView {
+                HomeView()
+                    .navigationTitle("Home")
+            }
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")
