@@ -9,7 +9,10 @@ import SwiftUI
 
 struct SkillDetailView: View {
     let skill: Skill
+    @State var inProgressSkill: InProgressSkill? // There is a better way to implement this for sure lol
+    
     let posterName: String //TODO replace with user
+    @State var learning: Bool
     
     var body: some View {
         ZStack {
@@ -67,17 +70,45 @@ struct SkillDetailView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 25))
                         
                     }
-                    .padding()
                     .foregroundColor(.white)
                 }
                 HStack{
                     Spacer()
-                    Button("Learn", action: {
-                        //TODO do something
-                    })
-                    .buttonStyle(GradientBackgroundStyle(startColor: Color.orange, endColor: Color.pink))
-                    .frame(height: 60)
-                    .padding()
+                    VStack {
+                        if (!learning) {
+                            Button("Learn", action: {
+                                //TODO update backend to indicate user has new in progress skill
+                                self.inProgressSkill = InProgressSkill(skill: self.skill, startedAt: Date(), completed: false)
+                                self.learning.toggle()
+                            })
+                            .buttonStyle(GradientBackgroundStyle(startColor: Color.orange, endColor: Color.pink))
+                            .frame(height: 60)
+                            .padding()
+                        } else if let safeSkill = inProgressSkill {
+                            
+                            if (!safeSkill.completed) {  // currently in progress
+                            Button("I'm Done!", action: {
+                                //TODO update backend to indicate user has completed this skill
+                                
+                                self.inProgressSkill!.completed = true
+
+                            })
+                            .buttonStyle(GradientBackgroundStyle(startColor: Color.yellow, endColor: Color.green))
+                            .frame(height: 60)
+                            .offset(y: 10)
+                            
+                                Text("Started on " + toDateString(from: safeSkill.startedAt, format: "MMM d HH:mm a"))
+                                    .foregroundColor(.white)
+                                    .offset(y:10)
+                                
+                            } else {  // this is one of the user's learned skills
+                                //Text("You've mastered this skill!").font(.title)
+                                //    .foregroundColor(.green)
+                                //    .fontWeight(.bold)
+                            }
+                           
+                        }
+                    }
                 }
             }
         }
@@ -104,6 +135,6 @@ struct GradientBackgroundStyle: ButtonStyle {
 
 struct SkillDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SkillDetailView(skill: Skill(title: "Test Skill", body: [], categories: ["Test"], completedCount: 10, estimatedTime: TimeInterval(180), description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu arcu nec mi posuere rutrum quis nec elit. Phasellus blandit viverra molestie. Nam erat metus, fermentum tincidunt fringilla et, gravida id erat. Donec euismod magna lectus, et faucibus augue accumsan sed. Aenean accumsan tincidunt vestibulum. Vivamus sit amet quam eget eros congue scelerisque non ac mauris. Nulla fringilla, justo nec sagittis scelerisque, neque justo tempus tellus, vel suscipit mauris metus vulputate turpis. In vitae neque erat. Sed aliquet rutrum leo, nec blandit enim malesuada quis. Sed suscipit eget felis ac egestas. Integer iaculis nisl rutrum, semper elit eget, volutpat lacus. Ut ut massa mi. Donec efficitur varius convallis. Suspendisse ac tincidunt libero.", image: Image("knitting"), videoURL: nil), posterName: "Test Name")
+        SkillDetailView(skill: Skill(title: "Test Skill", body: [], categories: ["Test"], completedCount: 10, estimatedTime: TimeInterval(180), description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu arcu nec mi posuere rutrum quis nec elit. Phasellus blandit viverra molestie. Nam erat metus, fermentum tincidunt fringilla et, gravida id erat. Donec euismod magna lectus, et faucibus augue accumsan sed. Aenean accumsan tincidunt vestibulum. Vivamus sit amet quam eget eros congue scelerisque non ac mauris. Nulla fringilla, justo nec sagittis scelerisque, neque justo tempus tellus, vel suscipit mauris metus vulputate turpis. In vitae neque erat. Sed aliquet rutrum leo, nec blandit enim malesuada quis. Sed suscipit eget felis ac egestas. Integer iaculis nisl rutrum, semper elit eget, volutpat lacus. Ut ut massa mi. Donec efficitur varius convallis. Suspendisse ac tincidunt libero.", image: Image("knitting"), videoURL: nil), inProgressSkill: nil, posterName: "Test Name", learning: false)
     }
 }
