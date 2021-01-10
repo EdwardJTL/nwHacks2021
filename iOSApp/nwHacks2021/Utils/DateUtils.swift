@@ -7,9 +7,9 @@
 
 import Foundation
 
-func toDateString(from timestamp: Date) -> String {
+func toDateString(from timestamp: Date, format: String = "y-MMM-d") -> String {
     let formatter = DateFormatter()
-    formatter.dateFormat = "y-MMM-d"
+    formatter.dateFormat = format
     return formatter.string(from: timestamp)
 }
 

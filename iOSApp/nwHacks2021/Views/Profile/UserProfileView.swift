@@ -15,6 +15,13 @@ struct UserProfileView: View {
     let profileImageSize: CGFloat = 80
     let iconSize: CGFloat = 20
     
+    let gridPadding: CGFloat = 5
+    var columns: [GridItem]
+        
+    init() {
+        columns = [GridItem(.adaptive(minimum: 100), spacing: gridPadding)]
+    }
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -43,6 +50,7 @@ struct UserProfileView: View {
                                 
                             }, label: {
                                 Text("Settings")
+                                    .font(.body)
                                     .foregroundColor(.white)
                                     .padding(3)
                                     .background(Color.blue)
@@ -55,9 +63,9 @@ struct UserProfileView: View {
                             Text(safeBio)
                                 .font(.caption)
                         }
-                        
                     }
                 }
+                // Bar with streak, followers, and stats
                 HStack {
                     Image(systemName: "flame")
                         .resizable()
@@ -90,15 +98,73 @@ struct UserProfileView: View {
                         }
                     })
                 }
+                // View of past skills with dates
+                skillsGrid
             }
             .padding(.horizontal)
         }
+    }
+    
+    var skillsGrid: some View {
+        LazyVGrid(
+            columns: columns,
+            alignment: .center,
+            spacing: gridPadding) {
+            ForEach(0..<userObject.user.posts.count) { idx in
+                ProfileSkillCellView(post: userObject.user.posts[idx])
+                    .aspectRatio(contentMode: .fit)
+            }
+        }
+    }
+}
+
+struct ProfileSkillCellView: View {
+    let post: Post
+    let iconSize: CGFloat = 15
+    let cornerRadius: CGFloat = 10
+    
+    var body: some View {
+        ZStack(alignment: .bottomLeading) {
+            ZStack(alignment: .topTrailing) {
+                Group {
+                    if let safeImage = post.inProgressSkill.skill.image {
+                        safeImage
+                            .resizable()
+                    } else {
+                        Image("backflip")
+                            .resizable()
+                    }
+                }
+                .aspectRatio(1, contentMode: .fill)
+                HStack {
+                    Spacer()
+                    Image(systemName: "flame")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: iconSize)
+                        .foregroundColor(.white)
+                    Text("\(post.clapCount)")
+                        .font(.caption)
+                        .foregroundColor(.white)
+                }
+                .padding(5)
+                .background(
+                    LinearGradient(gradient: Gradient(colors: [.clear, Color.black.opacity(0.5)]), startPoint: .bottom, endPoint: .top)
+                )
+            }
+            LinearGradient(gradient: Gradient(colors: [.clear, Color.black.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
+            Text(toDateString(from: post.completionDate, format: "MMM d"))
+                .font(.subheadline)
+                .foregroundColor(.white)
+                .padding(5)
+        }
+        .cornerRadius(cornerRadius)
     }
 }
 
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
         UserProfileView()
-            .environmentObject(UserData())
+            .environmentObject(UserData(user: PreviewUser().data))
     }
 }

@@ -9,10 +9,10 @@ import Foundation
 
 struct Post {
     let user: User
-    let skill: Skill
     let inProgressSkill: InProgressSkill
     let comments: [Comment]
     let clapCount: Int
+    let completionDate: Date
 }
 
 struct Comment {
