@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct InProgressCellView: View {
-    let skillInProgress: SkillInProgress
+    let skillInProgress: InProgressSkill
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
@@ -20,7 +20,7 @@ struct InProgressCellView: View {
             VStack(alignment: .leading) {
                 Text(skillInProgress.skill.title)
                     .foregroundColor(.white)
-                        .bold()
+                    .bold()
                 Text(toDateString(from: skillInProgress.startedAt))
                     .foregroundColor(.white)
             }
@@ -28,12 +28,11 @@ struct InProgressCellView: View {
         }
         .aspectRatio(1, contentMode: .fit)
         .cornerRadius(10.0, antialiased: true)
-        .padding()
     }
 }
 
 struct InProgressCellView_Previews: PreviewProvider {
     static var previews: some View {
-        InProgressCellView(skillInProgress: SkillInProgress(skill: Skill(title: "Backflip", body: [], categories: []), startedAt: Date()))
+        InProgressCellView(skillInProgress: InProgressSkill(skill: Skill(title: "Backflip", body: [], categories: []), startedAt: Date()))
     }
 }
