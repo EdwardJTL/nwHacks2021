@@ -53,6 +53,6 @@ struct TrendingSkillCellView: View {
 
 struct TrendingSkillCellView_Previews: PreviewProvider {
     static var previews: some View {
-        TrendingSkillCellView(trendingSkill: Skill(title: "Test Skill", body: [], categories: ["Test"], completedCount: 10, estimatedTime: TimeInterval(180), description: "DescriptionTest DescriptionTest DescriptionTest DescriptionTest DescriptionTest Description", image: Image("knitting"), videoURL: nil))
+        TrendingSkillCellView(trendingSkill: Skill(title: "Test Skill", categories: ["Test"], completedCount: 10, estimatedTime: TimeInterval(180), description: "DescriptionTest DescriptionTest DescriptionTest DescriptionTest DescriptionTest Description", image: Image("knitting"), videoURL: nil))
     }
 }
