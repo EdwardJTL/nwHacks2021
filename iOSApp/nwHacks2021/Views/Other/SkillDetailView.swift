@@ -12,7 +12,9 @@ struct SkillDetailView: View {
     let posterName: String //TODO replace with user
     
     var body: some View {
-        ScrollView {
+        ZStack {
+            Color.blue
+                .edgesIgnoringSafeArea(.all)
             VStack {
                 HStack {
                     Group {
@@ -29,49 +31,55 @@ struct SkillDetailView: View {
                     .frame(width: 60, height: 60, alignment: .leading)
                     .clipShape(Circle())
                     
-                    VStack {
-                        Text(posterName)
-                        Text(skill.title).fontWeight(.medium).font(.title)
+                    VStack(alignment: .leading) {
+                        Text(skill.title)
+                            .font(.title)
+                            .fontWeight(.medium)
+                        Text("by \(posterName)")
+                            .font(.subheadline)
                     }
-                    
                     
                     Spacer()
                 }
+                .padding()
                 
-                if let safeText = skill.description {
-                    Text(safeText)
-                } else {
-                    Text("No description provided.")
-                }
-            
-                //TODO right now this is a static picture but it should be playable media such as a video
-                Group {
-                    if let safeImage = skill.image {
-                        safeImage
-                            .resizable()
-                    } else {
-                        Image("backflip")
-                            .resizable()
+                ScrollView {
+                    VStack {
+                        Text(skill.description ?? "No description provided.")
+                            .font(.body)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .multilineTextAlignment(.leading)
+                            .truncationMode(.tail)
+                            .frame(width: 300)
+                    
+                        //TODO right now this is a static picture but it should be playable media such as a video
+                        Group {
+                            if let safeImage = skill.image {
+                                safeImage
+                                    .resizable()
+                            } else {
+                                Image("backflip")
+                                    .resizable()
+                            }
+                        }
+                        .aspectRatio(1, contentMode: .fill)
+                        .frame(width: 300, height: 200)
+                        .clipShape(RoundedRectangle(cornerRadius: 25))
+                        
                     }
+                    .padding()
+                    .foregroundColor(.white)
                 }
-                .aspectRatio(1, contentMode: .fill)
-                .frame(width: 300, height: 200)
-                .clipShape(RoundedRectangle(cornerRadius: 25))
-                
                 HStack{
                     Spacer()
                     Button("Learn", action: {
                         //TODO do something
                     })
                     .buttonStyle(GradientBackgroundStyle(startColor: Color.orange, endColor: Color.pink))
-                    .frame(width: 140, height: 60)
-                    .offset(y: 10.0)
+                    .frame(height: 60)
+                    .padding()
                 }
-            
             }
-            .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
         }
     }
     
@@ -96,6 +104,6 @@ struct GradientBackgroundStyle: ButtonStyle {
 
 struct SkillDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SkillDetailView(skill: Skill(title: "Test Skill", body: [], categories: ["Test"], completedCount: 10, estimatedTime: TimeInterval(180), description: "DescriptionTest DescriptionTest DescriptionTest DescriptionTest DescriptionTest Description", image: Image("knitting"), videoURL: nil), posterName: "Test Name")
+        SkillDetailView(skill: Skill(title: "Test Skill", body: [], categories: ["Test"], completedCount: 10, estimatedTime: TimeInterval(180), description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu arcu nec mi posuere rutrum quis nec elit. Phasellus blandit viverra molestie. Nam erat metus, fermentum tincidunt fringilla et, gravida id erat. Donec euismod magna lectus, et faucibus augue accumsan sed. Aenean accumsan tincidunt vestibulum. Vivamus sit amet quam eget eros congue scelerisque non ac mauris. Nulla fringilla, justo nec sagittis scelerisque, neque justo tempus tellus, vel suscipit mauris metus vulputate turpis. In vitae neque erat. Sed aliquet rutrum leo, nec blandit enim malesuada quis. Sed suscipit eget felis ac egestas. Integer iaculis nisl rutrum, semper elit eget, volutpat lacus. Ut ut massa mi. Donec efficitur varius convallis. Suspendisse ac tincidunt libero.", image: Image("knitting"), videoURL: nil), posterName: "Test Name")
     }
 }

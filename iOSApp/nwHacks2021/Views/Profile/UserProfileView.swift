@@ -138,7 +138,7 @@ struct ProfileSkillCellView: View {
                 .aspectRatio(1, contentMode: .fill)
                 HStack {
                     Spacer()
-                    Image(systemName: "flame")
+                    Image(systemName: "hands.clap")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(height: iconSize)
