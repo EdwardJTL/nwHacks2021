@@ -9,7 +9,6 @@ import Combine
 import Foundation
 import SwiftUI
 
-
 // MARK: - Data types
 struct Skill {
     let title: String

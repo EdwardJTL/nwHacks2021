@@ -13,9 +13,16 @@ struct InProgressCellView: View {
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            Image("backflip")
-                .resizable()
-                .aspectRatio(1, contentMode: .fill)
+            Group {
+                if let safeImage = skillInProgress.skill.image {
+                    safeImage
+                        .resizable()
+                } else {
+                    Image("backflip")
+                        .resizable()
+                }
+            }
+            .aspectRatio(1, contentMode: .fill)
             LinearGradient(gradient: Gradient(colors: [.clear, Color.black.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
             VStack(alignment: .leading) {
                 Text(skillInProgress.skill.title)
