@@ -12,8 +12,8 @@ struct UserProfileView: View {
     
     @EnvironmentObject var userObject: UserData
     
-    let profileImageSize: CGFloat = 80
-    let iconSize: CGFloat = 20
+    let profileImageSize: CGFloat = 88
+    let iconSize: CGFloat = 22
     
     let gridPadding: CGFloat = 5
     var columns: [GridItem]
@@ -101,6 +101,7 @@ struct UserProfileView: View {
                         }
                     })
                 }
+                .padding()
                 // View of past skills with dates
                 skillsGrid
             }
