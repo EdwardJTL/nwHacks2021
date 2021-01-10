@@ -25,18 +25,21 @@ const addSkill = (db, userID, skillname, picture) => {
 };
 
 const addPost = async (db, userID, title, tags, skill, post) => {
-  const ref = db.ref(`users/${userID}/posts`);
-  const id = uuidv4();
-  await ref.push({
-    postID: id,
-    title: title,
-    tags: tags,
-    skill: skill,
-    post: post,
-  });
-  return id;
-}
+    const ref = db.ref(`users/${userID}/posts`);
+    const id = uuidv4();
+    await ref.push({
+      postID: id,
+      title: title,
+      tags: tags,
+      skill: skill,
+      post: post,
+    });
+    return id;
+  }  
 
+const clap = (db, userID, clapperID, postID) => {
+    const ref = db.ref(`users/${userID}/posts/${postID}`);
+    ref.push(clapperID);
+};
 
-
-export { addFriend, editProfile, addPost };
+export { addFriend, editProfile, addPost, clap };

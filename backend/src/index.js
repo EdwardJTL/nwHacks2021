@@ -1,8 +1,7 @@
 import express from "express";
 import admin from "firebase-admin";
 import cors from "cors";
-import { addFriend, editProfile, addPost } from "./functions/user.js";
-import { clap } from "./functions/skill.js";
+import { addFriend, editProfile, addPost, clap} from "./functions/user.js";
 
 admin.initializeApp({
   credential: admin.credential.applicationDefault(),
