@@ -9,6 +9,9 @@ import Foundation
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var inProgressSkills: InProgressSkills
+    @EnvironmentObject var discoverSkills: DiscoverSkills
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -17,10 +20,11 @@ struct HomeView: View {
                     .font(Font.largeTitle)
                     .bold()
                     .padding(.horizontal)
-                ScrollView(.horizontal) {
+                ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: 20) {
-                        ForEach(0..<10) {
-                            Text("Item \($0)")
+                        ForEach(0..<inProgressSkills.skills.count) { idx in
+                            InProgressCellView(skillInProgress: inProgressSkills.skills[idx])
+                                .frame(width: 200)
                         }
                     }
                     .fixedSize()
@@ -33,10 +37,11 @@ struct HomeView: View {
                     .padding(.horizontal)
                 ScrollView(.vertical) {
                     LazyVStack(alignment:.leading, spacing: 20) {
-                        ForEach(0..<20) {
-                            Text("Item \($0)")
+                        ForEach(0..<discoverSkills.skills.count) { idx in
+                            DiscoverSkillCellView(skill: discoverSkills.skills[idx])
                         }
                     }
+                    .padding(.horizontal)
                 }
                 
                 Spacer()
@@ -47,6 +52,7 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView().environmentObject(InProgressSkills(skills: PreviewInProgressSkills().data))
+            .environmentObject(DiscoverSkills(skills: PreviewDiscoverSkills().data))
     }
 }
