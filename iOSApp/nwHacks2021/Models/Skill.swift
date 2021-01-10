@@ -78,23 +78,15 @@ struct PreviewDiscoverSkills {
 class InProgressSkills: ObservableObject {
     @Published var skills: [InProgressSkill]
     
-    init() {
-        skills = []
-    }
-    
-    init(skills: [InProgressSkill]) {
-        self.skills = skills
+    init(skills: [InProgressSkill]? = nil) {
+        self.skills = skills ?? []
     }
 }
 
 class DiscoverSkills: ObservableObject {
     @Published var skills: [Skill]
     
-    init() {
-        skills = []
-    }
-    
-    init(skills: [Skill]) {
-        self.skills = skills
+    init(skills: [Skill]? = nil) {
+        self.skills = skills ?? []
     }
 }

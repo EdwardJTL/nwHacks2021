@@ -73,6 +73,7 @@ struct UserProfileView: View {
                         .frame(height: iconSize)
                         .foregroundColor(.orange)
                     Text("\(userObject.user.streaks)")
+                        .font(.body)
                     
                     Spacer()
                     
@@ -82,6 +83,7 @@ struct UserProfileView: View {
                         .frame(height: iconSize)
                         .foregroundColor(.blue)
                     Text("\(userObject.user.followers.count)")
+                        .font(.body)
                     
                     Spacer()
                     
@@ -95,6 +97,7 @@ struct UserProfileView: View {
                                 .frame(height: iconSize)
                                 .foregroundColor(.blue)
                             Text("Stats")
+                                .font(.body)
                         }
                     })
                 }
@@ -103,6 +106,7 @@ struct UserProfileView: View {
             }
             .padding(.horizontal)
         }
+        .padding(.top)
     }
     
     var skillsGrid: some View {
