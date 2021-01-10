@@ -10,6 +10,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var inProgressSkills: InProgressSkills
+    @EnvironmentObject var discoverSkills: DiscoverSkills
     
     var body: some View {
         ScrollView {
@@ -36,10 +37,11 @@ struct HomeView: View {
                     .padding(.horizontal)
                 ScrollView(.vertical) {
                     LazyVStack(alignment:.leading, spacing: 20) {
-                        ForEach(0..<20) {
-                            Text("Item \($0)")
+                        ForEach(0..<discoverSkills.skills.count) { idx in
+                            DiscoverSkillCellView(skill: discoverSkills.skills[idx])
                         }
                     }
+                    .padding(.horizontal)
                 }
                 
                 Spacer()
@@ -48,19 +50,9 @@ struct HomeView: View {
     }
 }
 
-struct PreviewInProgressSkills {
-    var data: [InProgressSkill]
-    
-    init() {
-        data = []
-        for _ in 0..<10 {
-            data.append(InProgressSkill(skill: Skill(title: "Backflip", body: [], categories: []), startedAt: Date()))
-        }
-    }
-}
-
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView().environmentObject(InProgressSkills(skills: PreviewInProgressSkills().data))
+            .environmentObject(DiscoverSkills(skills: PreviewDiscoverSkills().data))
     }
 }
