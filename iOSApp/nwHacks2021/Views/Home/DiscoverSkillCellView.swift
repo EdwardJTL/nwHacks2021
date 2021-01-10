@@ -84,7 +84,6 @@ struct DiscoverSkillCellView: View {
     }
 }
 
-
 struct DiscoverSkillCellView_Previews: PreviewProvider {
     static var previews: some View {
         DiscoverSkillCellView(skill: Skill(title: "Test Skill", body: [], categories: ["Test"], completedCount: 10, estimatedTime: TimeInterval(180), description: "Test Description", image: Image("knitting"), videoURL: nil))
