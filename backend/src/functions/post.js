@@ -1,7 +1,7 @@
 import { getID, getTimestamp } from "./helper.js";
 import { getFriends } from "./friend.js";
 
-const addPost = async (db, userID, picture, content, title, tags) => {
+const addPost = async (db, userID, picture, content, title, tags, shared) => {
   const ref = await db.ref(`users/${userID}/posts`);
   const id = getID();
   const timestamp = getTimestamp();
@@ -12,6 +12,7 @@ const addPost = async (db, userID, picture, content, title, tags) => {
     content: content,
     title: title,
     tags: tags,
+    shared: shared,
     postedAt: timestamp,
   });
   return [id, timestamp];
@@ -59,7 +60,17 @@ const getPosts = async (db, userID) => {
   return await ref.once("value").then(async (snapshot) => {
     const posts = [];
     await snapshot.forEach((post) => {
-      posts.push(post.toJSON());
+      post = post.toJSON();
+      console.log(post);
+      if (!post["shared"]) {
+        return;
+      }
+      const tags = [];
+      for (const key in post["tags"]) {
+        tags.push(post["tags"][key]);
+      }
+      post["tags"] = tags;
+      posts.push(post);
     });
     return posts;
   });

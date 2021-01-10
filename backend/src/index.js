@@ -9,7 +9,7 @@ import {
   getNewsfeed,
   getComments,
 } from "./functions/post.js";
-import { startSkill, finishSkill } from "./functions/skill.js";
+import { startSkill, finishSkill, getSkills } from "./functions/skill.js";
 
 admin.initializeApp({
   credential: admin.credential.applicationDefault(),
@@ -42,7 +42,6 @@ app.get("/friend/:userID", async (req, res) => {
 app.get("/newsfeed/:userID", async (req, res) => {
   const { userID } = req.params;
   const posts = await getNewsfeed(db, userID);
-  console.log("here");
   res.send({
     posts: posts,
   });
@@ -51,9 +50,16 @@ app.get("/newsfeed/:userID", async (req, res) => {
 app.get("/comments/:posterID/:postID", async (req, res) => {
   const { posterID, postID } = req.params;
   const comments = await getComments(db, posterID, postID);
-
   res.send({
     comments: comments,
+  });
+});
+
+app.get("/skills/:userID", async (req, res) => {
+  const { userID } = req.params;
+  const skills = await getSkills(db, userID);
+  res.send({
+    skills: skills,
   });
 });
 
@@ -114,8 +120,16 @@ app.post("/skill/start", async (req, res) => {
 });
 
 app.post("/skill/finish", async (req, res) => {
-  const { userID, skill, picture } = req.body;
-  const timestamp = await finishSkill(db, userID, skill, picture);
+  const { userID, skill, picture, title, shared, content } = req.body;
+  const timestamp = await finishSkill(
+    db,
+    userID,
+    skill,
+    picture,
+    title,
+    content,
+    shared
+  );
   res.send({
     finishedAt: timestamp,
   });

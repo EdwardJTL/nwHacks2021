@@ -7,7 +7,8 @@ const startSkill = async (db, userID, skill) => {
     null,
     "",
     `${userID} has started working on ${skill}`,
-    [skill]
+    [skill],
+    true
   );
   const ref = await db.ref(`users/${userID}/skills`);
   await ref.push({
@@ -17,14 +18,23 @@ const startSkill = async (db, userID, skill) => {
   return timestamp;
 };
 
-const finishSkill = async (db, userID, skill, picture) => {
+const finishSkill = async (
+  db,
+  userID,
+  skill,
+  picture,
+  title,
+  content,
+  shared
+) => {
   const [id, timestamp] = await addPost(
     db,
     userID,
     picture,
-    "",
-    `${userID} has finished working on ${skill}`,
-    [skill]
+    content,
+    title,
+    [skill],
+    shared
   );
   const ref = await db.ref(`users/${userID}/skills`);
   return await ref
@@ -41,4 +51,15 @@ const finishSkill = async (db, userID, skill, picture) => {
     });
 };
 
-export { startSkill, finishSkill };
+const getSkills = async (db, userID) => {
+  const ref = await db.ref(`users/${userID}/skills`);
+  return await ref.once("value").then(async (snapshot) => {
+    const skills = [];
+    await snapshot.forEach((skill) => {
+      skills.push(skill.toJSON());
+    });
+    return skills;
+  });
+};
+
+export { startSkill, finishSkill, getSkills };
