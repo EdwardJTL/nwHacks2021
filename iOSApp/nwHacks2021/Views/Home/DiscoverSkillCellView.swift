@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DiscoverSkillCellView: View {
     let skill: Skill
-    let imageSize: CGFloat = 80
+    let imageSize: CGFloat = 76
     let iconSize: CGFloat = 20
     let roundedCorner: CGFloat = 10
     
@@ -48,6 +48,7 @@ struct DiscoverSkillCellView: View {
                         .foregroundColor(.white)
                 }
                 HStack(spacing: 20) {
+                    Spacer()
                     if let safeTime = skill.estimatedTime {
                         HStack {
                             Image(systemName: "timer")
@@ -59,6 +60,7 @@ struct DiscoverSkillCellView: View {
                                 .foregroundColor(.white)
                         }
                         .frame(height: iconSize)
+                        
                     }
                     if let safeCount = skill.completedCount {
                         HStack {
@@ -71,8 +73,9 @@ struct DiscoverSkillCellView: View {
                                 .foregroundColor(.white)
                         }
                         .frame(height: iconSize)
+                        
                     }
-                    if let firstCategory = skill.categories.first {
+                    /*if let firstCategory = skill.categories.first {
                         Text(firstCategory)
                             .font(.caption)
                             .foregroundColor(.white)
@@ -82,9 +85,11 @@ struct DiscoverSkillCellView: View {
                                     .stroke(Color.white, lineWidth: 2)
                             )
                             .frame(height: iconSize)
-                    }
+                    }*/
                 }
             }
+            .padding(.leading, 3.0)
+            //.padding()
             Spacer()
         }
         .padding(10)
