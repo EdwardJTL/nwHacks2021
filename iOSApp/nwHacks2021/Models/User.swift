@@ -5,9 +5,11 @@
 //  Created by Edward Luo on 2021-01-09.
 //
 
+import Alamofire
 import Combine
 import Foundation
 import SwiftUI
+import SwiftyJSON
 
 // MARK: - Data types
 struct User {
@@ -24,10 +26,10 @@ struct User {
     var posts: [Post]
     var streaks: Int
     
-    var followers: [User]
+    var followers: [String]
     
     static func defaultUser() -> User {
-        return User(userName: "TesterUserName",
+        return User(userName: "aihli",
                     firstName: "Alice",
                     lastName: "Li",
                     email: "tester@McTest.face",
@@ -60,5 +62,26 @@ class UserData: ObservableObject {
     
     init(user: User? = nil) {
         self.user = user ?? User.defaultUser()
+    }
+    
+    func refreshUser() {
+        // basic info
+        AF.request(buildGETProfile(userID: user.userName), method: .get).validate().responseJSON { [weak self] (response) in
+            guard let self = self else { return }
+            let profileJSON: JSON = JSON(response.value!)
+            
+            self.user.firstName = profileJSON["name"].stringValue.components(separatedBy: " ").first ?? ""
+            self.user.lastName = profileJSON["name"].stringValue.components(separatedBy: " ").last ?? ""
+            self.user.bio = profileJSON["biography"].stringValue
+            self.user.interests = profileJSON["interests"].arrayValue.map { $0.stringValue}
+        }
+        
+        // followers
+        AF.request(buildGETFriendEndpoint(userID: user.userName), method: .get).validate().responseJSON { [weak self] (response) in
+            guard let self = self else { return }
+            let friendsJSON: JSON = JSON(response.value!)
+            
+            self.user.followers = friendsJSON["friends"].arrayValue.map { $0.stringValue}
+        }
     }
 }

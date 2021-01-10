@@ -91,6 +91,9 @@ struct ContentView: View {
                     Text("Profile")
                 }
                 .tag(4)
+                .onAppear(perform: {
+                    userObject.refreshUser()
+                })
         }
         .environmentObject(inProgressSkills)
         .environmentObject(discoverSkills)
