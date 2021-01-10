@@ -10,15 +10,6 @@ import {
   getComments,
 } from "./functions/post.js";
 import { startSkill, finishSkill } from "./functions/skill.js";
-import {
-  editProfile,
-  addSkill,
-  finishSkill,
-  addPost,
-  clap,
-  getNewsfeed,
-  getComments,
-} from "./functions/user.js";
 
 admin.initializeApp({
   credential: admin.credential.applicationDefault(),
@@ -42,7 +33,7 @@ app.use(function (req, res, next) {
 
 app.get("/friend/:userID", async (req, res) => {
   const { userID } = req.params;
-  const friends = getFriends(db, userID);
+  const friends = await getFriends(db, userID);
   res.send({
     friends: friends,
   });
@@ -50,7 +41,8 @@ app.get("/friend/:userID", async (req, res) => {
 
 app.get("/newsfeed/:userID", async (req, res) => {
   const { userID } = req.params;
-  const posts = getNewsfeed(db, userID);
+  const posts = await getNewsfeed(db, userID);
+  console.log("here");
   res.send({
     posts: posts,
   });
@@ -58,7 +50,8 @@ app.get("/newsfeed/:userID", async (req, res) => {
 
 app.get("/comments/:posterID/:postID", async (req, res) => {
   const { posterID, postID } = req.params;
-  const comments = getComments(db, posterID, postID);
+  const comments = await getComments(db, posterID, postID);
+
   res.send({
     comments: comments,
   });
@@ -82,6 +75,7 @@ app.post("/post", async (req, res) => {
     title,
     tags
   );
+  console.log(timestamp);
   res.send({
     postID: id,
     postedAt: timestamp,

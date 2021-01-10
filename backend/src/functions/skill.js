@@ -17,7 +17,7 @@ const startSkill = async (db, userID, skill) => {
   return timestamp;
 };
 
-const finishSkill = async (db, userID, skill) => {
+const finishSkill = async (db, userID, skill, picture) => {
   const [id, timestamp] = await addPost(
     db,
     userID,
@@ -32,8 +32,10 @@ const finishSkill = async (db, userID, skill) => {
     .equalTo(skill)
     .once("value")
     .then((skillRef) => {
-      ref.child(skillRef.key).update({
-        finishedAt: timestamp,
+      skillRef.forEach((sr) => {
+        ref.child(sr.key).update({
+          finishedAt: timestamp,
+        });
       });
       return timestamp;
     });

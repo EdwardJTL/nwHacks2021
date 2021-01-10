@@ -23,9 +23,11 @@ const addClap = async (db, posterID, postID) => {
     .orderByChild("postID")
     .equalTo(postID)
     .once("value")
-    .then((post) => {
-      ref.child(post.key).update({
-        claps: post.child("claps") + 1,
+    .then(async (post) => {
+      await post.forEach((postRef) => {
+        ref.child(postRef.key).update({
+          claps: postRef.child("claps").val() + 1,
+        });
       });
     });
   return true;
@@ -37,14 +39,16 @@ const addComment = async (db, commenterID, comment, posterID, postID) => {
     .orderByChild("postID")
     .equalTo(postID)
     .once("value")
-    .then((post) => {
+    .then(async (post) => {
       const id = getID();
       const timestamp = getTimestamp();
-      ref.child(`${post.key}/comments`).push({
-        commenterID: commenterID,
-        commentID: id,
-        comment: comment,
-        postedAt: timestamp,
+      await post.forEach((postRef) => {
+        ref.child(`${postRef.key}/comments`).push({
+          commenterID: commenterID,
+          commentID: id,
+          comment: comment,
+          postedAt: timestamp,
+        });
       });
       return [id, timestamp];
     });
@@ -63,11 +67,13 @@ const getPosts = async (db, userID) => {
 
 const getNewsfeed = async (db, userID) => {
   const friends = await getFriends(db, userID);
+  console.log(friends);
   let posts = [];
-  await friends.forEach(async (friendID) => {
-    const friendPosts = getPosts(db, friendID);
+  for (const friendID of friends) {
+    const friendPosts = await getPosts(db, friendID);
+    console.log(friendPosts);
     posts = posts.concat(friendPosts);
-  });
+  }
   return posts;
 };
 
@@ -77,10 +83,13 @@ const getComments = async (db, posterID, postID) => {
     .orderByChild("postID")
     .equalTo(postID)
     .once("value")
-    .then((post) => {
+    .then(async (post) => {
       const comments = [];
-      await post.child("comments").forEach((comment) => {
-        comments.push(comment);
+      await post.forEach((postRef) => {
+        const commentJSON = postRef.toJSON()["comments"];
+        for (const key in commentJSON) {
+          comments.push(commentJSON[key]);
+        }
       });
       return comments;
     });
