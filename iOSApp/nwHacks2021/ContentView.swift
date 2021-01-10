@@ -13,13 +13,19 @@ struct ContentView: View {
     var inProgressSkills: InProgressSkills
     var discoverSkills: DiscoverSkills
     var userObject: UserData
+    var storyHolder: Stories
+    var socialPosts: PostData
     
     init(inProgressSkills: InProgressSkills? = nil,
          discoverSkills: DiscoverSkills? = nil,
-         user: UserData? = nil) {
+         user: UserData? = nil,
+         storyHolder: Stories? = nil,
+         socialPosts: PostData? = nil) {
         self.inProgressSkills = inProgressSkills ?? InProgressSkills()
         self.discoverSkills = discoverSkills ?? DiscoverSkills()
         self.userObject = user ?? UserData()
+        self.storyHolder = storyHolder ?? Stories()
+        self.socialPosts = socialPosts ?? PostData()
     }
     
     var body: some View {
@@ -50,8 +56,10 @@ struct ContentView: View {
                 }
                 .tag(2)
          
-            Text("Social Tab")
-                .font(.system(size: 30, weight: .bold, design: .rounded))
+            NavigationView{
+                SocialView()
+                    .navigationTitle("Social")
+            }
                 .tabItem {
                     Image(systemName: "person.2.circle")
                     Text("Social")
@@ -69,6 +77,8 @@ struct ContentView: View {
         .environmentObject(inProgressSkills)
         .environmentObject(discoverSkills)
         .environmentObject(userObject)
+        .environmentObject(storyHolder)
+        .environmentObject(socialPosts)
     }
 }
 
@@ -76,6 +86,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(inProgressSkills: InProgressSkills(skills: PreviewInProgressSkills().data),
                     discoverSkills: DiscoverSkills(skills: PreviewDiscoverSkills().data),
-                    user: UserData(user: PreviewUser().data))
+                    user: UserData(user: PreviewUser().data),
+                    storyHolder: Stories(stories: PreviewStories().data))
     }
 }

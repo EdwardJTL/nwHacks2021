@@ -12,24 +12,21 @@ import SwiftUI
 // MARK: - Data types
 struct Skill {
     let title: String
-    let body: [SkillBody]
     let categories: [String]
     let completedCount: Int?
     let estimatedTime: TimeInterval?
-    let description: String?
+    let description: String
     let image: Image?
     let videoURL: String?
     
     init(title: String,
-         body: [SkillBody],
          categories: [String],
          completedCount: Int? = nil,
          estimatedTime: TimeInterval? = nil,
-         description: String? = nil,
+         description: String,
          image: Image? = nil,
          videoURL: String? = nil) {
         self.title = title
-        self.body = body
         self.categories = categories
         self.completedCount = completedCount
         self.estimatedTime = estimatedTime
@@ -39,12 +36,6 @@ struct Skill {
     }
 }
 
-struct SkillBody {
-    let description: String
-    let image: Image?
-    let videoURL: String?
-}
-
 struct InProgressSkill {
     let skill: Skill
     let startedAt: Date
@@ -52,13 +43,21 @@ struct InProgressSkill {
 }
 
 // MARK: - Preview Data Generator
+struct PreviewSkill {
+    var data: Skill
+    
+    init() {
+        data = Skill(title: "Backflip", categories: ["Sports"], completedCount: 10, estimatedTime: 3600, description: "Here is how you do a backflip", image: Image("backflip"), videoURL: nil)
+    }
+}
+
 struct PreviewInProgressSkills {
     var data: [InProgressSkill]
     
     init() {
         data = []
         for _ in 0..<10 {
-            data.append(InProgressSkill(skill: Skill(title: "Backflip", body: [], categories: []), startedAt: Date()))
+            data.append(InProgressSkill(skill: PreviewSkill().data, startedAt: Date()))
         }
     }
 }
@@ -69,7 +68,7 @@ struct PreviewDiscoverSkills {
     init() {
         data = []
         for _ in 0..<10 {
-            data.append(Skill(title: "Knitting", body: [], categories: ["Home"], completedCount: 10, estimatedTime: TimeInterval(180), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
+            data.append(Skill(title: "Knitting", categories: ["home"], completedCount: 10, estimatedTime: TimeInterval(180), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
         }
     }
 }
@@ -121,24 +120,16 @@ struct PreviewTrendingSkills {
 class InProgressSkills: ObservableObject {
     @Published var skills: [InProgressSkill]
     
-    init() {
-        skills = []
-    }
-    
-    init(skills: [InProgressSkill]) {
-        self.skills = skills
+    init(skills: [InProgressSkill]? = nil) {
+        self.skills = skills ?? []
     }
 }
 
 class DiscoverSkills: ObservableObject {
     @Published var skills: [Skill]
     
-    init() {
-        skills = []
-    }
-    
-    init(skills: [Skill]) {
-        self.skills = skills
+    init(skills: [Skill]? = nil) {
+        self.skills = skills ?? []
     }
 }
 

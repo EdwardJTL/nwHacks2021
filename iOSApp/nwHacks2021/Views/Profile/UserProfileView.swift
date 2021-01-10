@@ -73,6 +73,7 @@ struct UserProfileView: View {
                         .frame(height: iconSize)
                         .foregroundColor(.orange)
                     Text("\(userObject.user.streaks)")
+                        .font(.body)
                     
                     Spacer()
                     
@@ -82,6 +83,7 @@ struct UserProfileView: View {
                         .frame(height: iconSize)
                         .foregroundColor(.blue)
                     Text("\(userObject.user.followers.count)")
+                        .font(.body)
                     
                     Spacer()
                     
@@ -95,6 +97,7 @@ struct UserProfileView: View {
                                 .frame(height: iconSize)
                                 .foregroundColor(.blue)
                             Text("Stats")
+                                .font(.body)
                         }
                     })
                 }
@@ -103,6 +106,7 @@ struct UserProfileView: View {
             }
             .padding(.horizontal)
         }
+        .padding(.top)
     }
     
     var skillsGrid: some View {
@@ -127,7 +131,7 @@ struct ProfileSkillCellView: View {
         ZStack(alignment: .bottomLeading) {
             ZStack(alignment: .topTrailing) {
                 Group {
-                    if let safeImage = post.inProgressSkill.skill.image {
+                    if let safeImage = post.skill.image {
                         safeImage
                             .resizable()
                     } else {
@@ -153,7 +157,7 @@ struct ProfileSkillCellView: View {
                 )
             }
             LinearGradient(gradient: Gradient(colors: [.clear, Color.black.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
-            Text(toDateString(from: post.completionDate, format: "MMM d"))
+            Text(toDateString(from: post.completionDate!, format: "MMM d"))
                 .font(.subheadline)
                 .foregroundColor(.white)
                 .padding(5)
