@@ -73,7 +73,7 @@ struct ContentView: View {
             }
             .tabItem {
                 Image(systemName: "pencil.circle")
-                Text("Social")
+                Text("Create")
             }
             .tag(2)
             
@@ -81,11 +81,11 @@ struct ContentView: View {
                 SocialView()
                     .navigationTitle("Social")
             }
-                .tabItem {
-                    Image(systemName: "person.2.circle")
-                    Text("Social")
-                }
-                .tag(3)
+            .tabItem {
+                Image(systemName: "person.2.circle")
+                Text("Social")
+            }
+            .tag(3)
          
             UserProfileView()
                 .font(.system(size: 30, weight: .bold, design: .rounded))
@@ -94,6 +94,9 @@ struct ContentView: View {
                     Text("Profile")
                 }
                 .tag(4)
+                .onAppear(perform: {
+                    userObject.refreshUser()
+                })
         }
         .environmentObject(inProgressSkills)
         .environmentObject(discoverSkills)

@@ -22,8 +22,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let contentView =
             ContentView(inProgressSkills: InProgressSkills(skills: PreviewInProgressSkills().data),
                         discoverSkills: DiscoverSkills(skills: PreviewDiscoverSkills().data),
+                        trendingSkills: TrendingSkills(skills: PreviewTrendingSkills().data),
+                        exploreableSkills: ExploreableSkills(skills: PreviewExploreableSkills().data),
+                        exploreableCategories: ExploreableCategories(categories: PreviewExploreableCategories().data),
                         user: UserData(user: PreviewUser().data),
-                        storyHolder: Stories(stories: PreviewStories().data),
+                        storyHolder: Stories(stories: DemoStories().data),
                         socialPosts: PostData(posts: PreviewPosts().data))
 
         // Use a UIHostingController as window root view controller.

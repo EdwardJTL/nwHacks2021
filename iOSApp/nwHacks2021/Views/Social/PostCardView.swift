@@ -45,6 +45,7 @@ struct PostCardView: View {
                     if let safeImage = post.user.photo {
                         safeImage
                             .resizable()
+                            .scaledToFill()
                     } else {
                         Image(systemName: "person.circle.fill")
                             .resizable()
