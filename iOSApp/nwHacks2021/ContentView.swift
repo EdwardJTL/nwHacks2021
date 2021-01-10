@@ -14,15 +14,18 @@ struct ContentView: View {
     var discoverSkills: DiscoverSkills
     var userObject: UserData
     var storyHolder: Stories
+    var socialPosts: PostData
     
     init(inProgressSkills: InProgressSkills? = nil,
          discoverSkills: DiscoverSkills? = nil,
          user: UserData? = nil,
-         storyHolder: Stories? = nil) {
+         storyHolder: Stories? = nil,
+         socialPosts: PostData? = nil) {
         self.inProgressSkills = inProgressSkills ?? InProgressSkills()
         self.discoverSkills = discoverSkills ?? DiscoverSkills()
         self.userObject = user ?? UserData()
         self.storyHolder = storyHolder ?? Stories()
+        self.socialPosts = socialPosts ?? PostData()
     }
     
     var body: some View {
@@ -53,7 +56,10 @@ struct ContentView: View {
                 }
                 .tag(2)
          
-            SocialView()
+            NavigationView{
+                SocialView()
+                    .navigationTitle("Social")
+            }
                 .tabItem {
                     Image(systemName: "person.2.circle")
                     Text("Social")
@@ -72,6 +78,7 @@ struct ContentView: View {
         .environmentObject(discoverSkills)
         .environmentObject(userObject)
         .environmentObject(storyHolder)
+        .environmentObject(socialPosts)
     }
 }
 

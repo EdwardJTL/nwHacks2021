@@ -23,7 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             ContentView(inProgressSkills: InProgressSkills(skills: PreviewInProgressSkills().data),
                         discoverSkills: DiscoverSkills(skills: PreviewDiscoverSkills().data),
                         user: UserData(user: PreviewUser().data),
-                        storyHolder: Stories(stories: PreviewStories().data))
+                        storyHolder: Stories(stories: PreviewStories().data),
+                        socialPosts: PostData(posts: PreviewPosts().data))
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

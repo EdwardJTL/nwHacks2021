@@ -108,17 +108,10 @@ struct SocialView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     LazyVStack {
                         ForEach(posts.data.indices) { idx in
-                            NavigationLink(
-                                destination: PostDetailView(
-                                    clapped: $posts.claps[idx],
-                                    comment: $posts.comments[idx],
-                                    post: posts.data[idx]),
-                                label: {
-                                PostCardView(clapped: $posts.claps[idx],
-                                             comment: $posts.comments[idx],
-                                             post: posts.data[idx])
-                                    .padding()
-                                })
+                            PostCardView(clapped: $posts.claps[idx],
+                                         comment: $posts.comments[idx],
+                                         post: posts.data[idx])
+                                .padding()
                         }
                     }
                 }

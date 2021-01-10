@@ -12,8 +12,8 @@ import SwiftUI
 struct PostCardView: View {
     
     @EnvironmentObject var currentUser: UserData
-    @State var clapped: Bool = false
-    @State var comment: String = ""
+    @Binding var clapped: Bool
+    @Binding var comment: String
     
     let post: Post
     
@@ -80,11 +80,22 @@ struct PostCardView: View {
             }
             .padding([.horizontal, .top])
             
-            Divider()
-            
-            content
-            
-            Divider()
+            // Body
+            NavigationLink(
+                destination: PostDetailView(
+                    clapped: $clapped,
+                    comment: $comment,
+                    post: post),
+                label: {
+                    VStack {
+                        
+                        Divider()
+                        
+                        content
+                        
+                        Divider()
+                    }
+                })
             
             // Text Field
             
@@ -208,11 +219,20 @@ struct PostCardView: View {
 struct PostCardView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            PostCardView(post: PreviewCreatedPost().data)
+            PostCardView(
+                clapped: .constant(false),
+                comment: .constant(""),
+                post: PreviewCreatedPost().data)
                 .environmentObject(UserData(user: User.defaultUser()))
-            PostCardView(post: PreviewStartedPost().data)
+            PostCardView(
+                clapped: .constant(false),
+                comment: .constant(""),
+                post: PreviewStartedPost().data)
                 .environmentObject(UserData(user: User.defaultUser()))
-            PostCardView(post: PreviewCompletedPost().data)
+            PostCardView(
+                clapped: .constant(false),
+                comment: .constant(""),
+                post: PreviewCompletedPost().data)
                 .environmentObject(UserData(user: User.defaultUser()))
         }
     }
