@@ -11,6 +11,14 @@ struct TrendingSkillCellView: View {
     let trendingSkill: Skill
     
     var body: some View {
+        NavigationLink(
+            destination: SkillDetailView(skill: trendingSkill, inProgressSkill: nil, posterName: "Trending user", learning: false),
+            label: {
+                content
+            })
+    }
+    
+    var content: some View {
         ZStack(alignment: .bottomLeading) {
             
             Group {

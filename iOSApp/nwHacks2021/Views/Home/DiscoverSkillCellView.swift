@@ -15,6 +15,15 @@ struct DiscoverSkillCellView: View {
     let roundedCorner: CGFloat = 10
     
     var body: some View {
+        NavigationLink(
+            destination: SkillDetailView(skill: skill, inProgressSkill: nil, posterName: "Discovered User", learning: false),
+            label: {
+                content
+            })
+    }
+    
+    
+    var content: some View {
         HStack {
             Group {
                 if let safeImage = skill.image {

@@ -9,8 +9,14 @@ import SwiftUI
 
 struct ExploredSkillCellView: View {
     let exploredSkill: Skill
-    
     var body: some View {
+        NavigationLink(
+            destination: SkillDetailView(skill: exploredSkill, inProgressSkill: nil, posterName: "Explored user", learning: false),
+            label: {
+                content
+            })
+    }
+    var content: some View {
         ZStack(alignment: .bottomLeading) {
             
             Group {
