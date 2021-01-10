@@ -34,6 +34,8 @@
 		E9C8C0B025AAEF28005B2580 /* PostCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C0AF25AAEF27005B2580 /* PostCardView.swift */; };
 		E9C8C0B825AAFC25005B2580 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C0B725AAFC25005B2580 /* UIScreen+Extension.swift */; };
 		E9C8C0C925AB0C2E005B2580 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C0C825AB0C2E005B2580 /* PostDetailView.swift */; };
+		E9C8C0DD25AB6C35005B2580 /* CaptureImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C0DC25AB6C35005B2580 /* CaptureImageView.swift */; };
+		E9C8C0E225AB6C73005B2580 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C0E125AB6C73005B2580 /* ProgressBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,8 @@
 		E9C8C0AF25AAEF27005B2580 /* PostCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCardView.swift; sourceTree = "<group>"; };
 		E9C8C0B725AAFC25005B2580 /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		E9C8C0C825AB0C2E005B2580 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
+		E9C8C0DC25AB6C35005B2580 /* CaptureImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureImageView.swift; sourceTree = "<group>"; };
+		E9C8C0E125AB6C73005B2580 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				20D8D3B325AA9E5300D12719 /* SkillDetailView.swift */,
+				E9C8C0DC25AB6C35005B2580 /* CaptureImageView.swift */,
+				E9C8C0E125AB6C73005B2580 /* ProgressBarView.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -398,7 +404,9 @@
 				20D8D3D225AAB91500D12719 /* SearchBarView.swift in Sources */,
 				20D8D3C225AAB03E00D12719 /* ExploreView.swift in Sources */,
 				20D8D3CA25AAB4D700D12719 /* TrendingSkillCellView.swift in Sources */,
+				E9C8C0DD25AB6C35005B2580 /* CaptureImageView.swift in Sources */,
 				20D8D3B425AA9E5300D12719 /* SkillDetailView.swift in Sources */,
+				E9C8C0E225AB6C73005B2580 /* ProgressBarView.swift in Sources */,
 				E9C8C0C925AB0C2E005B2580 /* PostDetailView.swift in Sources */,
 				E9C8C0B025AAEF28005B2580 /* PostCardView.swift in Sources */,
 				E9C8C05025AA7935005B2580 /* DateUtils.swift in Sources */,
