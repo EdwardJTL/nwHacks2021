@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		20D8D3B425AA9E5300D12719 /* SkillDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8D3B325AA9E5300D12719 /* SkillDetailView.swift */; };
+		20D8D3C225AAB03E00D12719 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8D3C125AAB03E00D12719 /* ExploreView.swift */; };
+		20D8D3CA25AAB4D700D12719 /* TrendingSkillCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8D3C925AAB4D700D12719 /* TrendingSkillCellView.swift */; };
+		20D8D3D225AAB91500D12719 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8D3D125AAB91500D12719 /* SearchBarView.swift */; };
+		20D8D3D725AAD16A00D12719 /* ExploredSkillCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8D3D625AAD16A00D12719 /* ExploredSkillCellView.swift */; };
 		E9A407E625AA53610073C12A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A407E525AA53610073C12A /* AppDelegate.swift */; };
 		E9A407E825AA53610073C12A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A407E725AA53610073C12A /* SceneDelegate.swift */; };
 		E9A407EA25AA53610073C12A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A407E925AA53610073C12A /* ContentView.swift */; };
@@ -46,6 +50,10 @@
 
 /* Begin PBXFileReference section */
 		20D8D3B325AA9E5300D12719 /* SkillDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailView.swift; sourceTree = "<group>"; };
+		20D8D3C125AAB03E00D12719 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExploreView.swift; path = nwHacks2021/Views/Other/ExploreView.swift; sourceTree = SOURCE_ROOT; };
+		20D8D3C925AAB4D700D12719 /* TrendingSkillCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrendingSkillCellView.swift; path = nwHacks2021/Views/Other/TrendingSkillCellView.swift; sourceTree = SOURCE_ROOT; };
+		20D8D3D125AAB91500D12719 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchBarView.swift; path = nwHacks2021/Views/Other/SearchBarView.swift; sourceTree = SOURCE_ROOT; };
+		20D8D3D625AAD16A00D12719 /* ExploredSkillCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExploredSkillCellView.swift; path = nwHacks2021/Views/Other/ExploredSkillCellView.swift; sourceTree = SOURCE_ROOT; };
 		E9A407E225AA53610073C12A /* nwHacks2021.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nwHacks2021.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A407E525AA53610073C12A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9A407E725AA53610073C12A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -192,6 +200,10 @@
 		E9C8C03225AA657A005B2580 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				20D8D3C125AAB03E00D12719 /* ExploreView.swift */,
+				20D8D3D625AAD16A00D12719 /* ExploredSkillCellView.swift */,
+				20D8D3D125AAB91500D12719 /* SearchBarView.swift */,
+				20D8D3C925AAB4D700D12719 /* TrendingSkillCellView.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -365,8 +377,12 @@
 				E9C8C04725AA75B7005B2580 /* InProgressCellView.swift in Sources */,
 				E9C8C09025AAC5E0005B2580 /* SocialView.swift in Sources */,
 				E9C8C03F25AA7297005B2580 /* Skill.swift in Sources */,
+				20D8D3D225AAB91500D12719 /* SearchBarView.swift in Sources */,
+				20D8D3C225AAB03E00D12719 /* ExploreView.swift in Sources */,
+				20D8D3CA25AAB4D700D12719 /* TrendingSkillCellView.swift in Sources */,
 				20D8D3B425AA9E5300D12719 /* SkillDetailView.swift in Sources */,
 				E9C8C05025AA7935005B2580 /* DateUtils.swift in Sources */,
+				20D8D3D725AAD16A00D12719 /* ExploredSkillCellView.swift in Sources */,
 				E9A407E825AA53610073C12A /* SceneDelegate.swift in Sources */,
 				E9C8C06925AA953B005B2580 /* Post.swift in Sources */,
 				E9C8C07325AA9936005B2580 /* UserProfileView.swift in Sources */,
