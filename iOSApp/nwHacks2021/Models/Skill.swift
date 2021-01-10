@@ -46,7 +46,7 @@ struct InProgressSkill {
 }
 
 // MARK: - Preview Data Generator
-struct PreviewSkill {
+struct BackFlipSkill {
     var data: Skill
     
     init() {
@@ -70,7 +70,7 @@ struct PreviewInProgressSkills {
     init() {
         data = []
         for _ in 0..<10 {
-            data.append(InProgressSkill(skill: PreviewSkill().data, startedAt: Date()))
+            data.append(InProgressSkill(skill: BackFlipSkill().data, startedAt: Date()))
         }
     }
 }
@@ -92,19 +92,16 @@ struct PreviewExploreableSkills {
     init() {
         data = []
         for _ in 0..<10 {
-            data.append(Skill(title: "Knitting", categories: ["Home"], completedCount: 10, estimatedTime: TimeInterval(180), creator: User.defaultUser(), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
+            data.append(Skill(title: "Knitting", categories: ["Home"], completedCount: 10, estimatedTime: TimeInterval(18000), creator: User.defaultUser(), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
         }
         for _ in 0..<10 {
-            data.append(Skill(title: "Knitting", categories: ["Health"], completedCount: 10, estimatedTime: TimeInterval(180), creator: User.defaultUser(), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
+            data.append(Skill(title: "Backflip", categories: ["Fitness"], completedCount: 50, estimatedTime: TimeInterval(3000), creator: User.DemoUsers(id: 3), description: "Backflip like you're spooderman", image: Image("backflip"), videoURL: nil))
         }
         for _ in 0..<10 {
-            data.append(Skill(title: "Knitting", categories: ["Cooking"], completedCount: 10, estimatedTime: TimeInterval(180), creator: User.defaultUser(), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
+            data.append(Skill(title: "Poached Eggs", categories: ["Cooking"], completedCount: 150, estimatedTime: TimeInterval(180), creator: User.DemoUsers(id: 0), description: "Each poached eggs", image: Image("poached-egg"), videoURL: nil))
         }
         for _ in 0..<10 {
-            data.append(Skill(title: "Knitting", categories: ["Art"], completedCount: 10, estimatedTime: TimeInterval(180), creator: User.defaultUser(), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
-        }
-        for _ in 0..<9 {
-            data.append(Skill(title: "Knitting", categories: ["Coding"], completedCount: 10, estimatedTime: TimeInterval(180), creator: User.defaultUser(), description: "Learn to knit a beanie in 3 easy steps!", image: Image("backflip"), videoURL: nil))
+            data.append(Skill(title: "Caligraphy", categories: ["Art"], completedCount: 5, estimatedTime: TimeInterval(6000), creator: User.DemoUsers(id: 4), description: "Write pretty letters for your loved ones!", image: Image("calli"), videoURL: nil))
         }
     }
 }
@@ -113,7 +110,7 @@ struct PreviewExploreableCategories {
     var data: [String]
     
     init() {
-        data = ["Home", "Health", "Cooking", "Art", "Coding"]
+        data = ["Home", "Fitness", "Cooking", "Art"]
     }
 }
 

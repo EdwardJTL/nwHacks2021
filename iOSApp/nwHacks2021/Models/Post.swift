@@ -75,7 +75,7 @@ struct PreviewComments {
         let user = User.defaultUser()
         
         for i in 0..<15 {
-            data.append(Comment(user: user, body: "Tis is text comment \(i)", timestamp: Date()))
+            data.append(Comment(user: user, body: "So proud of you! Sending \(i) claps", timestamp: Date()))
         }
     }
 }
@@ -95,8 +95,8 @@ struct PreviewCreatedPost {
     var data: Post
     
     init() {
-        let user = User.defaultUser()
-        let skill = PreviewSkill().data
+        let user = User.DemoUsers(id: 3)
+        let skill = BackFlipSkill().data
         
         data = Post(user: user,
                     skill: skill,
@@ -117,7 +117,7 @@ struct PreviewStartedPost {
     
     init() {
         let user = User.defaultUser()
-        let skill = PreviewSkill().data
+        let skill = BackFlipSkill().data
         
         data = Post(user: user,
                     skill: skill,
@@ -138,12 +138,12 @@ struct PreviewCompletedPost{
     
     init() {
         let user = User.defaultUser()
-        let skill = PreviewSkill().data
+        let skill = BackFlipSkill().data
         
         data = Post(user: user,
                     skill: skill,
                     type: .completed,
-                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu arcu nec mi posuere rutrum quis nec elit. Phasellus blandit viverra molestie. Nam erat metus, fermentum tincidunt fringilla et, gravida id erat. Donec euismod magna lectus, et faucibus augue accumsan sed. Aenean accumsan tincidunt vestibulum. Vivamus sit amet quam eget eros congue scelerisque non ac mauris. Nulla fringilla, justo nec sagittis scelerisque, neque justo tempus tellus, vel suscipit mauris metus vulputate turpis. In vitae neque erat. Sed aliquet rutrum leo, nec blandit enim malesuada quis. Sed suscipit eget felis ac egestas. Integer iaculis nisl rutrum, semper elit eget, volutpat lacus. Ut ut massa mi. Donec efficitur varius convallis. Suspendisse ac tincidunt libero.",
+                    description: "I've always wanted to try doing a back flip. I did it today by following this amazing guide from miles morales. Loved it!",
                     image: Image("backflip"),
                     videoURL: nil,
                     comments: PreviewComments().data,

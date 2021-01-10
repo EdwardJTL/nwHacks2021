@@ -135,6 +135,7 @@ struct StoryIconView: View {
                         safePfp
                             .renderingMode(.original)
                             .resizable()
+                            .scaledToFill()
                     } else {
                         Image(systemName: "person.crop.circle.fill")
                             .resizable()

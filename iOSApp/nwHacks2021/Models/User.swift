@@ -57,7 +57,7 @@ struct User {
     static func DemoUsers(id: Int) -> User {
         return User(userName: dummyUsers[id]![0], firstName: dummyUsers[id]![1], lastName: dummyUsers[id]![2],
                     email: "\(dummyUsers[id]![0])@blah.ca",
-                    photo: Image(systemName: "person.crop.circle.fill"),
+                    photo: Image(dummyUsers[id]![1]),
                     bio: "\(dummyUsers[id]![1]) likes \(dummyUsers[id]![3])",
                     interests: [dummyUsers[id]![3]],
                     posts: [],
@@ -77,10 +77,19 @@ struct PreviewUser {
     
     init() {
         data = User.defaultUser()
-        for _ in 0..<40 {
-            let post = PreviewCompletedPost().data
-            data.posts.append(post)
-        }
+        let skill = Skill(title: "Backflip", categories: ["Sports"], completedCount: 10, estimatedTime: 3600, creator: User.defaultUser(), description: "Here is how you do a backflip", image: Image("backflip"), videoURL: nil)
+        data.posts.append(Post(user: data,
+                    skill: skill,
+                    type: .completed,
+                    description: "I've always wanted to try doing a back flip. I did it today by following this amazing guide from miles morales. Loved it!",
+                    image: Image("backflip"),
+                    videoURL: nil,
+                    comments: PreviewComments().data,
+                    clapCount: 10,
+                    creationDate: Date(),
+                    startDate: Date(),
+                    completionDate: Date())
+        )
     }
 }
 
@@ -112,20 +121,6 @@ class UserData: ObservableObject {
             
             self.user.followers = friendsJSON["friends"].arrayValue.map { $0.stringValue}
         }
-        
-//        // Completed Skills
-//        AF.request(buildGETSkills(userID: user.userName), method: .get).validate().responseJSON { [weak self] (response) in
-//            guard let self = self else { return }
-//            let responseJSON: JSON = JSON(response.value!)
-//
-//            let skillsJSON = responseJSON["skills"].arrayValue
-//
-//            skillsJSON.forEach { skillJSON in
-//                if skillJSON["completed"].boolValue {
-//                    self.user.posts
-//                }
-//            }
-//        }
         
     }
 }

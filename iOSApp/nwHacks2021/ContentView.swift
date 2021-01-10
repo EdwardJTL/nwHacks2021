@@ -73,7 +73,7 @@ struct ContentView: View {
             }
             .tabItem {
                 Image(systemName: "pencil.circle")
-                Text("Social")
+                Text("Create")
             }
             .tag(2)
             

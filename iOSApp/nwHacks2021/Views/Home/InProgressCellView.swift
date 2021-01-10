@@ -50,6 +50,6 @@ struct InProgressCellView: View {
 
 struct InProgressCellView_Previews: PreviewProvider {
     static var previews: some View {
-        InProgressCellView(skillInProgress: InProgressSkill(skill: PreviewSkill().data, startedAt: Date()))
+        InProgressCellView(skillInProgress: InProgressSkill(skill: BackFlipSkill().data, startedAt: Date()))
     }
 }
