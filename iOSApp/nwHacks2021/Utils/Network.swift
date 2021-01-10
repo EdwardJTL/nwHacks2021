@@ -7,7 +7,7 @@
 
 import Foundation
 
-let serverAddr = "https://bab76b437796.ngrok.io"
+let serverAddr = "https://bad83289221a.ngrok.io"
 let aliceUserID = "aihli"
 
 func buildGETFriendEndpoint(userID: String) -> String {

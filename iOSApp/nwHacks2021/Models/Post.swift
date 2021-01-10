@@ -5,9 +5,11 @@
 //  Created by Edward Luo on 2021-01-09.
 //
 
+import Alamofire
 import Combine
 import Foundation
 import SwiftUI
+import SwiftyJSON
 
 // MARK: - Data types
 struct Post {
@@ -17,7 +19,7 @@ struct Post {
     let description: String
     let image: Image?
     let videoURL: String?
-    let comments: [Comment]
+    var comments: [Comment]
     let clapCount: Int
     let creationDate: Date?
     let startDate: Date?
@@ -52,6 +54,16 @@ struct PreviewStories {
         for _ in 0..<10 {
             data.append(Story(user: User.defaultUser(), images: [Image("knitting"), Image("backflip")]))
         }
+    }
+}
+
+struct DemoStories {
+    var data: [Story]
+    
+    init() {
+        data = []
+        data.append(Story(user: User.DemoUsers(id: 0), images: [Image("east_dessert_1"), Image("east_dessert_2")]))
+        data.append(Story(user: User.DemoUsers(id: 4), images: [Image("calli")]))
     }
 }
 
@@ -166,5 +178,9 @@ class PostData: ObservableObject {
             self.claps = []
             self.comments = []
         }
+    }
+    
+    func commitComment(postIdx: Int, by user: User) {
+        data[postIdx].comments.append(Comment(user: user, body: comments[postIdx], timestamp: Date()))
     }
 }

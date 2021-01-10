@@ -40,7 +40,35 @@ struct User {
                     streaks: 10,
                     followers: [])
     }
+    
+    static func UserFromID(id: String) -> User {
+        return User(userName: id,
+                    firstName: id,
+                    lastName: "",
+                    email: "tester@McTest.face",
+                    photo: Image(systemName: "person.crop.circle.fill"),
+                    bio: "This is their bio!",
+                    interests: ["potato"],
+                    posts: [],
+                    streaks: 10,
+                    followers: [])
+    }
+    
+    static func DemoUsers(id: Int) -> User {
+        return User(userName: dummyUsers[id]![0], firstName: dummyUsers[id]![1], lastName: dummyUsers[id]![2],
+                    email: "\(dummyUsers[id]![0])@blah.ca",
+                    photo: Image(systemName: "person.crop.circle.fill"),
+                    bio: "\(dummyUsers[id]![1]) likes \(dummyUsers[id]![3])",
+                    interests: [dummyUsers[id]![3]],
+                    posts: [],
+                    streaks: 5,
+                    followers: [])
+    }
 }
+
+let dummyUsers: [Int: [String]] = [0: ["martha_cooks", "Martha", "Flores", "cooking"], 1: ["jeanie", "Jean", "Richardson", "gardening"],
+                                   2: ["lillies", "Lillian", "Parker", "crafts"], 3: ["spooderman", "Miles", "Morales", "gadgets"],
+                                   4: ["tats", "Marty", "Greene", "tatto"], 5: ["psyduck", "Ash", "Surge", "pokemon"]]
 
 
 // MARK: - Preview Data Generator
@@ -74,6 +102,7 @@ class UserData: ObservableObject {
             self.user.lastName = profileJSON["name"].stringValue.components(separatedBy: " ").last ?? ""
             self.user.bio = profileJSON["biography"].stringValue
             self.user.interests = profileJSON["interests"].arrayValue.map { $0.stringValue}
+            self.user.streaks = profileJSON["streak"].intValue
         }
         
         // followers
@@ -83,5 +112,20 @@ class UserData: ObservableObject {
             
             self.user.followers = friendsJSON["friends"].arrayValue.map { $0.stringValue}
         }
+        
+//        // Completed Skills
+//        AF.request(buildGETSkills(userID: user.userName), method: .get).validate().responseJSON { [weak self] (response) in
+//            guard let self = self else { return }
+//            let responseJSON: JSON = JSON(response.value!)
+//
+//            let skillsJSON = responseJSON["skills"].arrayValue
+//
+//            skillsJSON.forEach { skillJSON in
+//                if skillJSON["completed"].boolValue {
+//                    self.user.posts
+//                }
+//            }
+//        }
+        
     }
 }

@@ -54,6 +54,16 @@ struct PreviewSkill {
     }
 }
 
+struct DemoPoachEggSkill {
+    var data: Skill
+    
+    init() {
+        data = Skill(title: "Poach an Egg", categories: ["cooking"], completedCount: 150, estimatedTime: 120,
+                     creator: User.DemoUsers(id: 0),
+                     description: "Poach an perfect egg in 3 easy steps!", image: Image("poached-egg"), videoURL: nil)
+    }
+}
+
 struct PreviewInProgressSkills {
     var data: [InProgressSkill]
     

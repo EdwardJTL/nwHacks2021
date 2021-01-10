@@ -78,11 +78,11 @@ struct ContentView: View {
                 SocialView()
                     .navigationTitle("Social")
             }
-                .tabItem {
-                    Image(systemName: "person.2.circle")
-                    Text("Social")
-                }
-                .tag(3)
+            .tabItem {
+                Image(systemName: "person.2.circle")
+                Text("Social")
+            }
+            .tag(3)
          
             UserProfileView()
                 .font(.system(size: 30, weight: .bold, design: .rounded))
