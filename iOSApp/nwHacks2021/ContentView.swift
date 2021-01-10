@@ -12,11 +12,14 @@ struct ContentView: View {
     @State var selection = 0
     var inProgressSkills: InProgressSkills
     var discoverSkills: DiscoverSkills
+    var userObject: UserData
     
     init(inProgressSkills: InProgressSkills? = nil,
-         discoverSkills: DiscoverSkills? = nil) {
+         discoverSkills: DiscoverSkills? = nil,
+         user: UserData? = nil) {
         self.inProgressSkills = inProgressSkills ?? InProgressSkills()
         self.discoverSkills = discoverSkills ?? DiscoverSkills()
+        self.userObject = user ?? UserData()
     }
     
     var body: some View {
@@ -55,7 +58,7 @@ struct ContentView: View {
                 }
                 .tag(3)
          
-            Text("Profile Tab")
+            UserProfileView()
                 .font(.system(size: 30, weight: .bold, design: .rounded))
                 .tabItem {
                     Image(systemName: "person.crop.circle")
@@ -65,12 +68,14 @@ struct ContentView: View {
         }
         .environmentObject(inProgressSkills)
         .environmentObject(discoverSkills)
+        .environmentObject(userObject)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(inProgressSkills: InProgressSkills(skills: PreviewInProgressSkills().data),
-                    discoverSkills: DiscoverSkills(skills: PreviewDiscoverSkills().data))
+                    discoverSkills: DiscoverSkills(skills: PreviewDiscoverSkills().data),
+                    user: UserData(user: PreviewUser().data))
     }
 }

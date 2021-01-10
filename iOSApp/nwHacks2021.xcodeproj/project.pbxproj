@@ -24,6 +24,7 @@
 		E9C8C06925AA953B005B2580 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C06825AA953B005B2580 /* Post.swift */; };
 		E9C8C06E25AA9549005B2580 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C06D25AA9549005B2580 /* User.swift */; };
 		E9C8C07325AA9936005B2580 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C07225AA9936005B2580 /* UserProfileView.swift */; };
+		E9C8C09025AAC5E0005B2580 /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C08F25AAC5E0005B2580 /* SocialView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		E9C8C06825AA953B005B2580 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		E9C8C06D25AA9549005B2580 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E9C8C07225AA9936005B2580 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		E9C8C08F25AAC5E0005B2580 /* SocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 		E9C8C03325AA6580005B2580 /* Social */ = {
 			isa = PBXGroup;
 			children = (
+				E9C8C08F25AAC5E0005B2580 /* SocialView.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				E9A407E625AA53610073C12A /* AppDelegate.swift in Sources */,
 				E9C8C03625AA65AE005B2580 /* HomeView.swift in Sources */,
 				E9C8C04725AA75B7005B2580 /* InProgressCellView.swift in Sources */,
+				E9C8C09025AAC5E0005B2580 /* SocialView.swift in Sources */,
 				E9C8C03F25AA7297005B2580 /* Skill.swift in Sources */,
 				20D8D3B425AA9E5300D12719 /* SkillDetailView.swift in Sources */,
 				E9C8C05025AA7935005B2580 /* DateUtils.swift in Sources */,
