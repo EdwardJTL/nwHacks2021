@@ -40,15 +40,15 @@ struct User {
     }
 }
 
+
 // MARK: - Preview Data Generator
 struct PreviewUser {
     var data: User
     
     init() {
         data = User.defaultUser()
-        let inProgressSkill = InProgressSkill(skill: Skill(title: "Backflip", body: [], categories: []), startedAt: Date())
         for _ in 0..<40 {
-            let post = Post(user: data, inProgressSkill: inProgressSkill, comments: [], clapCount: 10, completionDate: Date())
+            let post = PreviewCompletedPost().data
             data.posts.append(post)
         }
     }

@@ -9,8 +9,14 @@ import SwiftUI
 
 struct ExploredSkillCellView: View {
     let exploredSkill: Skill
-    
     var body: some View {
+        NavigationLink(
+            destination: SkillDetailView(skill: exploredSkill, inProgressSkill: nil, learning: false),
+            label: {
+                content
+            })
+    }
+    var content: some View {
         ZStack(alignment: .bottomLeading) {
             
             Group {
@@ -31,12 +37,12 @@ struct ExploredSkillCellView: View {
             }
         }
         .aspectRatio(1, contentMode: .fit)
-        .cornerRadius(10.0, antialiased: true)
+        .cornerRadius(8.0, antialiased: true)
     }
 }
 
 struct ExploredSkillCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ExploredSkillCellView(exploredSkill: Skill(title: "Test Skill", body: [], categories: ["Test"], completedCount: 10, estimatedTime: TimeInterval(180), description: "DescriptionTest DescriptionTest DescriptionTest DescriptionTest DescriptionTest Description", image: Image("knitting"), videoURL: nil))
+        ExploredSkillCellView(exploredSkill: Skill(title: "Test Skill", categories: ["Test"], completedCount: 10, estimatedTime: TimeInterval(180), creator: PreviewUser().data, description: "DescriptionTest DescriptionTest DescriptionTest DescriptionTest DescriptionTest Description", image: Image("knitting"), videoURL: nil))
     }
 }

@@ -12,21 +12,42 @@ struct ContentView: View {
     @State var selection = 0
     var inProgressSkills: InProgressSkills
     var discoverSkills: DiscoverSkills
+    
+    var trendingSkills: TrendingSkills
+    var exploreableSkills: ExploreableSkills
+    var exploreableCategories: ExploreableCategories
+    
     var userObject: UserData
+    var storyHolder: Stories
+    var socialPosts: PostData
+    
     
     init(inProgressSkills: InProgressSkills? = nil,
          discoverSkills: DiscoverSkills? = nil,
-         user: UserData? = nil) {
+         trendingSkills: TrendingSkills? = nil,
+         exploreableSkills: ExploreableSkills? = nil,
+         exploreableCategories: ExploreableCategories? = nil,
+         user: UserData? = nil,
+         storyHolder: Stories? = nil,
+         socialPosts: PostData? = nil) {
         self.inProgressSkills = inProgressSkills ?? InProgressSkills()
         self.discoverSkills = discoverSkills ?? DiscoverSkills()
+        
+        self.trendingSkills = trendingSkills ?? TrendingSkills()
+        self.exploreableSkills = exploreableSkills ?? ExploreableSkills()
+        self.exploreableCategories = exploreableCategories ?? ExploreableCategories()
+        
         self.userObject = user ?? UserData()
+        self.storyHolder = storyHolder ?? Stories()
+        self.socialPosts = socialPosts ?? PostData()
     }
     
     var body: some View {
         TabView(selection: $selection) {
             NavigationView {
                 HomeView()
-                    .navigationTitle("Home")
+                   // .offset(y: -60)
+                  //  .navigationTitle("Home")
             }
                 .tabItem {
                     Image(systemName: "house.fill")
@@ -34,24 +55,32 @@ struct ContentView: View {
                 }
                 .tag(0)
          
-            Text("Bookmark Tab")
-                .font(.system(size: 30, weight: .bold, design: .rounded))
+            NavigationView {
+                ExploreView()
+                    .navigationTitle("Explore")
+            }
                 .tabItem {
                     Image(systemName: "magnifyingglass.circle")
                     Text("Explore")
                 }
                 .tag(1)
             
-            Text("Add Skill Tab")
-                .font(.system(size: 30, weight: .bold, design: .rounded))
-                .tabItem {
-                    Image(systemName: "pencil.circle")
-                    Text("Create")
-                }
-                .tag(2)
-         
-            Text("Social Tab")
-                .font(.system(size: 30, weight: .bold, design: .rounded))
+            
+            
+            NavigationView {
+                CreateSkillView()
+                    .navigationTitle("Create")
+            }
+            .tabItem {
+                Image(systemName: "pencil.circle")
+                Text("Social")
+            }
+            .tag(2)
+            
+            NavigationView{
+                SocialView()
+                    .navigationTitle("Social")
+            }
                 .tabItem {
                     Image(systemName: "person.2.circle")
                     Text("Social")
@@ -68,7 +97,14 @@ struct ContentView: View {
         }
         .environmentObject(inProgressSkills)
         .environmentObject(discoverSkills)
+        
+        .environmentObject(trendingSkills)
+        .environmentObject(exploreableSkills)
+        .environmentObject(exploreableCategories)
+        
         .environmentObject(userObject)
+        .environmentObject(storyHolder)
+        .environmentObject(socialPosts)
     }
 }
 
@@ -76,6 +112,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(inProgressSkills: InProgressSkills(skills: PreviewInProgressSkills().data),
                     discoverSkills: DiscoverSkills(skills: PreviewDiscoverSkills().data),
-                    user: UserData(user: PreviewUser().data))
+                    user: UserData(user: PreviewUser().data),
+                    storyHolder: Stories(stories: PreviewStories().data))
     }
 }

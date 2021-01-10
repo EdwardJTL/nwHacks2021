@@ -15,6 +15,15 @@ struct DiscoverSkillCellView: View {
     let roundedCorner: CGFloat = 10
     
     var body: some View {
+        NavigationLink(
+            destination: SkillDetailView(skill: skill, inProgressSkill: nil, learning: false),
+            label: {
+                content
+            })
+    }
+    
+    
+    var content: some View {
         HStack {
             Group {
                 if let safeImage = skill.image {
@@ -79,13 +88,15 @@ struct DiscoverSkillCellView: View {
             Spacer()
         }
         .padding(10)
-        .background(Color.blue)
+        .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color(red: 20/255, green: 93/255, blue: 200/255)]), startPoint: .leading, endPoint: .trailing).opacity(1))
         .cornerRadius(roundedCorner, antialiased: true)
+        .shadow(color: Color.blue.opacity(0.5), radius: 6, x: 2, y: 6)
+        
     }
 }
 
 struct DiscoverSkillCellView_Previews: PreviewProvider {
     static var previews: some View {
-        DiscoverSkillCellView(skill: Skill(title: "Test Skill", body: [], categories: ["Test"], completedCount: 10, estimatedTime: TimeInterval(180), description: "Test Description", image: Image("knitting"), videoURL: nil))
+        DiscoverSkillCellView(skill: Skill(title: "Test Skill", categories: ["Test"], completedCount: 10, estimatedTime: TimeInterval(180), creator: PreviewUser().data, description: "Test Description", image: Image("knitting"), videoURL: nil))
     }
 }
