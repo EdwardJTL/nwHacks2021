@@ -15,6 +15,7 @@ struct Skill {
     let categories: [String]
     let completedCount: Int?
     let estimatedTime: TimeInterval?
+    let creator: User
     let description: String
     let image: Image?
     let videoURL: String?
@@ -23,6 +24,7 @@ struct Skill {
          categories: [String],
          completedCount: Int? = nil,
          estimatedTime: TimeInterval? = nil,
+         creator: User,
          description: String,
          image: Image? = nil,
          videoURL: String? = nil) {
@@ -30,6 +32,7 @@ struct Skill {
         self.categories = categories
         self.completedCount = completedCount
         self.estimatedTime = estimatedTime
+        self.creator = creator
         self.description = description
         self.image = image
         self.videoURL = videoURL
@@ -47,7 +50,7 @@ struct PreviewSkill {
     var data: Skill
     
     init() {
-        data = Skill(title: "Backflip", categories: ["Sports"], completedCount: 10, estimatedTime: 3600, description: "Here is how you do a backflip", image: Image("backflip"), videoURL: nil)
+        data = Skill(title: "Backflip", categories: ["Sports"], completedCount: 10, estimatedTime: 3600, creator: User.defaultUser(), description: "Here is how you do a backflip", image: Image("backflip"), videoURL: nil)
     }
 }
 
@@ -68,7 +71,7 @@ struct PreviewDiscoverSkills {
     init() {
         data = []
         for _ in 0..<10 {
-            data.append(Skill(title: "Knitting", categories: ["home"], completedCount: 10, estimatedTime: TimeInterval(180), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
+            data.append(Skill(title: "Knitting", categories: ["home"], completedCount: 10, estimatedTime: TimeInterval(180), creator: User.defaultUser(), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
         }
     }
 }
@@ -79,19 +82,19 @@ struct PreviewExploreableSkills {
     init() {
         data = []
         for _ in 0..<10 {
-            data.append(Skill(title: "Knitting", categories: ["Home"], completedCount: 10, estimatedTime: TimeInterval(180), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
+            data.append(Skill(title: "Knitting", categories: ["Home"], completedCount: 10, estimatedTime: TimeInterval(180), creator: User.defaultUser(), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
         }
         for _ in 0..<10 {
-            data.append(Skill(title: "Knitting", categories: ["Health"], completedCount: 10, estimatedTime: TimeInterval(180), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
+            data.append(Skill(title: "Knitting", categories: ["Health"], completedCount: 10, estimatedTime: TimeInterval(180), creator: User.defaultUser(), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
         }
         for _ in 0..<10 {
-            data.append(Skill(title: "Knitting", categories: ["Cooking"], completedCount: 10, estimatedTime: TimeInterval(180), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
+            data.append(Skill(title: "Knitting", categories: ["Cooking"], completedCount: 10, estimatedTime: TimeInterval(180), creator: User.defaultUser(), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
         }
         for _ in 0..<10 {
-            data.append(Skill(title: "Knitting", categories: ["Art"], completedCount: 10, estimatedTime: TimeInterval(180), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
+            data.append(Skill(title: "Knitting", categories: ["Art"], completedCount: 10, estimatedTime: TimeInterval(180), creator: User.defaultUser(), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
         }
         for _ in 0..<9 {
-            data.append(Skill(title: "Knitting", categories: ["Coding"], completedCount: 10, estimatedTime: TimeInterval(180), description: "Learn to knit a beanie in 3 easy steps!", image: Image("backflip"), videoURL: nil))
+            data.append(Skill(title: "Knitting", categories: ["Coding"], completedCount: 10, estimatedTime: TimeInterval(180), creator: User.defaultUser(), description: "Learn to knit a beanie in 3 easy steps!", image: Image("backflip"), videoURL: nil))
         }
     }
 }
@@ -110,7 +113,7 @@ struct PreviewTrendingSkills {
     init() {
         data = []
         for i in 0..<10 {
-            data.append(Skill(title: "Backflip", categories: [], completedCount: 1003 - i*17, description: "This is trending"))
+            data.append(Skill(title: "Backflip", categories: [], completedCount: 1003 - i*17, creator: User.defaultUser(), description: "This is trending"))
         }
     }
 }

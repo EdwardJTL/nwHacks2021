@@ -13,7 +13,7 @@ struct InProgressCellView: View {
     
     var body: some View {
         NavigationLink(
-            destination: SkillDetailView(skill: skillInProgress.skill, inProgressSkill: skillInProgress, posterName: "Test", learning: true, presentingModalView: false, progressValue: 0.0, description: "", image: nil, showCaptureImageView: false),
+            destination: SkillDetailView(skill: skillInProgress.skill, inProgressSkill: skillInProgress, learning: true, presentingModalView: false, progressValue: 0.0, description: "", image: nil, showCaptureImageView: false),
             label: {
                 content
             })

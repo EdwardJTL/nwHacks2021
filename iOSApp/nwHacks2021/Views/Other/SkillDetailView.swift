@@ -11,7 +11,6 @@ struct SkillDetailView: View {
     let skill: Skill
     @State var inProgressSkill: InProgressSkill? // There is a better way to implement this for sure lol
     
-    let posterName: String //TODO replace with user
     @State var learning: Bool
     
     @State var presentingModalView: Bool = false
@@ -27,12 +26,12 @@ struct SkillDetailView: View {
             VStack {
                 HStack {
                     Group {
-                        if let safeImage = skill.image {
+                        if let safeImage = skill.creator.photo {
                             // TODO change to poster user image
                             safeImage
                                 .resizable()
                         } else {
-                            Image("backflip")
+                            Image("person.crop.circle.fill")
                                 .resizable()
                         }
                     }
@@ -44,7 +43,7 @@ struct SkillDetailView: View {
                         Text(skill.title)
                             .font(.title)
                             .fontWeight(.medium)
-                        Text("by \(posterName)")
+                        Text("by \(skill.creator.userName)")
                             .font(.subheadline)
                     }
                     
@@ -102,11 +101,9 @@ struct SkillDetailView: View {
                             })
                             .buttonStyle(GradientBackgroundStyle(startColor: Color.yellow, endColor: Color.green))
                             .frame(height: 60)
-                            .offset(y: 10)
                             
                                 Text("Started on " + toDateString(from: safeSkill.startedAt, format: "MMM d HH:mm a"))
                                     .foregroundColor(.white)
-                                    .offset(y:10)
                                 
                             } else {  // this is one of the user's learned skills.
                             }
@@ -174,7 +171,9 @@ struct SkillDetailView: View {
             .padding()
             //.background(LinearGradient(gradient: Gradient(colors: [Color.white, Color.yellow]), startPoint: .bottom, endPoint: .top).opacity(0.5))
         })
-        
+        .navigationTitle("Skill")
+        .navigationBarHidden(false)
+        .navigationBarTitleDisplayMode(.inline)
     }
     
 }
@@ -198,6 +197,6 @@ struct GradientBackgroundStyle: ButtonStyle {
 
 struct SkillDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SkillDetailView(skill: Skill(title: "Test Skill", categories: ["Test"], completedCount: 10, estimatedTime: TimeInterval(180), description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu arcu nec mi posuere rutrum quis nec elit. Phasellus blandit viverra molestie. Nam erat metus, fermentum tincidunt fringilla et, gravida id erat. Donec euismod magna lectus, et faucibus augue accumsan sed. Aenean accumsan tincidunt vestibulum. Vivamus sit amet quam eget eros congue scelerisque non ac mauris. Nulla fringilla, justo nec sagittis scelerisque, neque justo tempus tellus, vel suscipit mauris metus vulputate turpis. In vitae neque erat. Sed aliquet rutrum leo, nec blandit enim malesuada quis. Sed suscipit eget felis ac egestas. Integer iaculis nisl rutrum, semper elit eget, volutpat lacus. Ut ut massa mi. Donec efficitur varius convallis. Suspendisse ac tincidunt libero.", image: Image("knitting"), videoURL: nil), posterName: "Test Name", learning: false)
+        SkillDetailView(skill: Skill(title: "Test Skill", categories: ["Test"], completedCount: 10, estimatedTime: TimeInterval(180), creator: PreviewUser().data, description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu arcu nec mi posuere rutrum quis nec elit. Phasellus blandit viverra molestie. Nam erat metus, fermentum tincidunt fringilla et, gravida id erat. Donec euismod magna lectus, et faucibus augue accumsan sed. Aenean accumsan tincidunt vestibulum. Vivamus sit amet quam eget eros congue scelerisque non ac mauris. Nulla fringilla, justo nec sagittis scelerisque, neque justo tempus tellus, vel suscipit mauris metus vulputate turpis. In vitae neque erat. Sed aliquet rutrum leo, nec blandit enim malesuada quis. Sed suscipit eget felis ac egestas. Integer iaculis nisl rutrum, semper elit eget, volutpat lacus. Ut ut massa mi. Donec efficitur varius convallis. Suspendisse ac tincidunt libero.", image: Image("knitting"), videoURL: nil), learning: false)
     }
 }

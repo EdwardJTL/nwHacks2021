@@ -11,7 +11,7 @@ struct ExploredSkillCellView: View {
     let exploredSkill: Skill
     var body: some View {
         NavigationLink(
-            destination: SkillDetailView(skill: exploredSkill, inProgressSkill: nil, posterName: "Explored user", learning: false),
+            destination: SkillDetailView(skill: exploredSkill, inProgressSkill: nil, learning: false),
             label: {
                 content
             })
@@ -43,6 +43,6 @@ struct ExploredSkillCellView: View {
 
 struct ExploredSkillCellView_Previews: PreviewProvider {
     static var previews: some View {
-        ExploredSkillCellView(exploredSkill: Skill(title: "Test Skill", categories: ["Test"], completedCount: 10, estimatedTime: TimeInterval(180), description: "DescriptionTest DescriptionTest DescriptionTest DescriptionTest DescriptionTest Description", image: Image("knitting"), videoURL: nil))
+        ExploredSkillCellView(exploredSkill: Skill(title: "Test Skill", categories: ["Test"], completedCount: 10, estimatedTime: TimeInterval(180), creator: PreviewUser().data, description: "DescriptionTest DescriptionTest DescriptionTest DescriptionTest DescriptionTest Description", image: Image("knitting"), videoURL: nil))
     }
 }

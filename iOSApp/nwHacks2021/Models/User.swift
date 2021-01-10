@@ -40,6 +40,7 @@ struct User {
     }
 }
 
+
 // MARK: - Preview Data Generator
 struct PreviewUser {
     var data: User
