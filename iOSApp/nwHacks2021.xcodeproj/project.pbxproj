@@ -17,6 +17,8 @@
 		E9A4080825AA53670073C12A /* nwHacks2021UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A4080725AA53670073C12A /* nwHacks2021UITests.swift */; };
 		E9C8C03625AA65AE005B2580 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C03525AA65AE005B2580 /* HomeView.swift */; };
 		E9C8C03F25AA7297005B2580 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C03E25AA7297005B2580 /* Skill.swift */; };
+		E9C8C04725AA75B7005B2580 /* InProgressCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C04625AA75B7005B2580 /* InProgressCellView.swift */; };
+		E9C8C05025AA7935005B2580 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C04F25AA7935005B2580 /* DateUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		E9A4080925AA53670073C12A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9C8C03525AA65AE005B2580 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E9C8C03E25AA7297005B2580 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
+		E9C8C04625AA75B7005B2580 /* InProgressCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProgressCellView.swift; sourceTree = "<group>"; };
+		E9C8C04F25AA7935005B2580 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 		E9A407E425AA53610073C12A /* nwHacks2021 */ = {
 			isa = PBXGroup;
 			children = (
+				E9C8C04E25AA792B005B2580 /* Utils */,
 				E9C8C03D25AA728A005B2580 /* Models */,
 				E9C8C03025AA6565005B2580 /* Views */,
 				E9A407E525AA53610073C12A /* AppDelegate.swift */,
@@ -157,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				E9C8C03525AA65AE005B2580 /* HomeView.swift */,
+				E9C8C04625AA75B7005B2580 /* InProgressCellView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -188,6 +194,14 @@
 				E9C8C03E25AA7297005B2580 /* Skill.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		E9C8C04E25AA792B005B2580 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E9C8C04F25AA7935005B2580 /* DateUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,7 +336,9 @@
 			files = (
 				E9A407E625AA53610073C12A /* AppDelegate.swift in Sources */,
 				E9C8C03625AA65AE005B2580 /* HomeView.swift in Sources */,
+				E9C8C04725AA75B7005B2580 /* InProgressCellView.swift in Sources */,
 				E9C8C03F25AA7297005B2580 /* Skill.swift in Sources */,
+				E9C8C05025AA7935005B2580 /* DateUtils.swift in Sources */,
 				E9A407E825AA53610073C12A /* SceneDelegate.swift in Sources */,
 				E9A407EA25AA53610073C12A /* ContentView.swift in Sources */,
 			);
@@ -494,6 +510,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"nwHacks2021/Preview Content\"";
+				DEVELOPMENT_TEAM = 5998AG8FJ9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = nwHacks2021/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -514,6 +531,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"nwHacks2021/Preview Content\"";
+				DEVELOPMENT_TEAM = 5998AG8FJ9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = nwHacks2021/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 struct HomeView: View {
+    @State var inProgressSkills: [InProgressCellView]
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -17,7 +19,7 @@ struct HomeView: View {
                     .font(Font.largeTitle)
                     .bold()
                     .padding(.horizontal)
-                ScrollView(.horizontal) {
+                ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: 20) {
                         ForEach(0..<10) {
                             Text("Item \($0)")
@@ -47,6 +49,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(inProgressSkills: [])
     }
 }
