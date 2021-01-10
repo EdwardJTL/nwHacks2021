@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2050DD1025AB75F700E62CEA /* CreateSkillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2050DD0F25AB75F700E62CEA /* CreateSkillView.swift */; };
 		20D8D3B425AA9E5300D12719 /* SkillDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8D3B325AA9E5300D12719 /* SkillDetailView.swift */; };
 		20D8D3C225AAB03E00D12719 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8D3C125AAB03E00D12719 /* ExploreView.swift */; };
 		20D8D3CA25AAB4D700D12719 /* TrendingSkillCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8D3C925AAB4D700D12719 /* TrendingSkillCellView.swift */; };
@@ -61,6 +62,7 @@
 
 /* Begin PBXFileReference section */
 		13076B8A94E529423198F31A /* Pods-nwHacks2021.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nwHacks2021.debug.xcconfig"; path = "Target Support Files/Pods-nwHacks2021/Pods-nwHacks2021.debug.xcconfig"; sourceTree = "<group>"; };
+		2050DD0F25AB75F700E62CEA /* CreateSkillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSkillView.swift; sourceTree = "<group>"; };
 		20D8D3B325AA9E5300D12719 /* SkillDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailView.swift; sourceTree = "<group>"; };
 		20D8D3C125AAB03E00D12719 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExploreView.swift; path = nwHacks2021/Views/Explore/ExploreView.swift; sourceTree = SOURCE_ROOT; };
 		20D8D3C925AAB4D700D12719 /* TrendingSkillCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrendingSkillCellView.swift; path = nwHacks2021/Views/Explore/TrendingSkillCellView.swift; sourceTree = SOURCE_ROOT; };
@@ -141,6 +143,7 @@
 				20D8D3B325AA9E5300D12719 /* SkillDetailView.swift */,
 				E9C8C0DC25AB6C35005B2580 /* CaptureImageView.swift */,
 				E9C8C0E125AB6C73005B2580 /* ProgressBarView.swift */,
+				2050DD0F25AB75F700E62CEA /* CreateSkillView.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				20D8D3D225AAB91500D12719 /* SearchBarView.swift in Sources */,
 				20D8D3C225AAB03E00D12719 /* ExploreView.swift in Sources */,
 				E9C8C0F325AB76A9005B2580 /* Network.swift in Sources */,
+				2050DD1025AB75F700E62CEA /* CreateSkillView.swift in Sources */,
 				20D8D3CA25AAB4D700D12719 /* TrendingSkillCellView.swift in Sources */,
 				E9C8C0DD25AB6C35005B2580 /* CaptureImageView.swift in Sources */,
 				20D8D3B425AA9E5300D12719 /* SkillDetailView.swift in Sources */,

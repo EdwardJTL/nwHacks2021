@@ -43,7 +43,7 @@ struct ExploreView: View {
                         .bold()
                         .padding(.horizontal)
                     ScrollView(.horizontal, showsIndicators: false) {
-                        LazyHStack(spacing: 20) {
+                        LazyHStack(spacing: 10) {
                             let filteredSkills = exploreableSkills.skills.filter { skill in
                                 return skill.categories.contains(exploreableCategories.categories[idx])
                             }
@@ -51,6 +51,7 @@ struct ExploreView: View {
                             ForEach(0..<filteredSkills.count >> 1) { idx in
                                 VStack {
                                     ExploredSkillCellView(exploredSkill: filteredSkills[idx*2])
+                                        .padding(.bottom, 4.0)
                                         .frame(width: 100)
                                     ExploredSkillCellView(exploredSkill: filteredSkills[idx*2 + 1])
                                         .frame(width: 100)

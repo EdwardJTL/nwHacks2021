@@ -121,11 +121,28 @@ struct SkillDetailView: View {
                     .font(.largeTitle)
                 ProgressBarView(value: $progressValue).frame(height: 20)
                 
-                TextField("Share your experience...", text: $description, onCommit: {
-                    progressValue += 0.50 //WARNING
-                })
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .frame(height: 100)
+                ZStack(alignment: .leading) {
+                    TextEditor(text: $description)
+                        .font(.subheadline)
+                        .onChange(of: description) { value in
+                            progressValue = 0.50
+                        }
+                        .padding(.horizontal)
+                    
+                    if description.isEmpty {
+                        
+                        VStack {
+                            Text("Tell others about your experience!")
+                            .font(.custom("Helvetica", size: 16))
+                            .padding(.all)
+                                .offset(x: 6, y: -6)
+                            .foregroundColor(.secondary)
+                            Spacer()
+                            
+                        }
+                    }
+                }
+                
                 
                 Button(action: {
                     progressValue += 0.50 //WARNING - delay somehow?
@@ -140,9 +157,14 @@ struct SkillDetailView: View {
                                  // .shadow(radius: 10)
                                     .padding()
                 
-                if (showCaptureImageView) {
+                VStack {
+                    Spacer()
+                                
+                
+                    if (showCaptureImageView) {
                         CaptureImageView(isShown: $showCaptureImageView, image: $image)
                     }
+                }
                 
                 Spacer()
                 

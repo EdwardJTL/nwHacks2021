@@ -46,7 +46,8 @@ struct ContentView: View {
         TabView(selection: $selection) {
             NavigationView {
                 HomeView()
-                    .navigationTitle("Home")
+                   // .offset(y: -60)
+                  //  .navigationTitle("Home")
             }
                 .tabItem {
                     Image(systemName: "house.fill")
@@ -66,14 +67,16 @@ struct ContentView: View {
             
             
             
-            Text("Add Skill Tab")
-                .font(.system(size: 30, weight: .bold, design: .rounded))
-                .tabItem {
-                    Image(systemName: "pencil.circle")
-                    Text("Create")
-                }
-                .tag(2)
-         
+            NavigationView {
+                CreateSkillView()
+                    .navigationTitle("Create")
+            }
+            .tabItem {
+                Image(systemName: "pencil.circle")
+                Text("Social")
+            }
+            .tag(2)
+            
             NavigationView{
                 SocialView()
                     .navigationTitle("Social")
