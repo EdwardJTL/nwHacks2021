@@ -1,7 +1,16 @@
 import express from "express";
 import admin from "firebase-admin";
 import cors from "cors";
-import { addFriend, editProfile, addPost, clap} from "./functions/user.js";
+import {
+  addFriend,
+  editProfile,
+  addSkill,
+  finishSkill,
+  addPost,
+  clap,
+  getNewsfeed,
+  getComments,
+} from "./functions/user.js";
 
 admin.initializeApp({
   credential: admin.credential.applicationDefault(),
@@ -35,22 +44,48 @@ app.post("/profile", (req, res) => {
   res.send("Profile edited.");
 });
 
-app.post("/skill", (req, res) => {
+app.post("/skill", async (req, res) => {
+  const { userID, skillname } = req.body;
+  const postID = await addSkill(db, userID, skillname);
+  res.send({
+    postID: postID,
+  });
+});
+
+app.patch("/skill", async (req, res) => {
   const { userID, skillname, picture } = req.body;
+  finishSkill(db, userID, skillname, picture);
 });
 
 app.post("/post", async (req, res) => {
-  const {userID, title, tags, skill, post} = req.body;
+  const { userID, title, tags, skill, post } = req.body;
   const postID = await addPost(db, userID, title, tags, skill, post);
   res.send({
-    postID: postID
+    postID: postID,
   });
 });
 
 app.post("/clap", (req, res) => {
-  const {userID, clapperID, postID} = req.body;
+  const { userID, clapperID, postID } = req.body;
   clap(db, userID, clapperID, postID);
   res.send("Clap received!");
+});
+
+app.get("/newsfeed/user/:userID", async (req, res) => {
+  const { userID } = req.params;
+  const newsfeed = await getNewsfeed(db, userID);
+  res.send(newsfeed);
+});
+
+app.post("/comment", (req, res) => {
+  const { userID, comment, posterID, postID } = req.body;
+  addComment(db, userID, comment, posterID, postID);
+});
+
+app.get("/comment/:postID/:posterID", async (req, res) => {
+  const { postID, posterID } = req.params;
+  const comments = await getComments(db, posterID, postID);
+  res.send(comments);
 });
 
 app.listen(8080);
