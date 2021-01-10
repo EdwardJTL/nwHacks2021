@@ -73,6 +73,49 @@ struct PreviewDiscoverSkills {
     }
 }
 
+struct PreviewExploreableSkills {
+    var data: [Skill]
+    
+    init() {
+        data = []
+        for _ in 0..<10 {
+            data.append(Skill(title: "Knitting", body: [], categories: ["Home"], completedCount: 10, estimatedTime: TimeInterval(180), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
+        }
+        for _ in 0..<10 {
+            data.append(Skill(title: "Knitting", body: [], categories: ["Health"], completedCount: 10, estimatedTime: TimeInterval(180), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
+        }
+        for _ in 0..<10 {
+            data.append(Skill(title: "Knitting", body: [], categories: ["Cooking"], completedCount: 10, estimatedTime: TimeInterval(180), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
+        }
+        for _ in 0..<10 {
+            data.append(Skill(title: "Knitting", body: [], categories: ["Art"], completedCount: 10, estimatedTime: TimeInterval(180), description: "Learn to knit a beanie in 3 easy steps!", image: Image("knitting"), videoURL: nil))
+        }
+        for _ in 0..<9 {
+            data.append(Skill(title: "Knitting", body: [], categories: ["Coding"], completedCount: 10, estimatedTime: TimeInterval(180), description: "Learn to knit a beanie in 3 easy steps!", image: Image("backflip"), videoURL: nil))
+        }
+    }
+}
+
+struct PreviewExploreableCategories {
+    var data: [String]
+    
+    init() {
+        data = ["Home", "Health", "Cooking", "Art", "Coding"]
+    }
+}
+
+struct PreviewTrendingSkills {
+    var data: [Skill]
+    
+    init() {
+        data = []
+        for i in 0..<10 {
+            data.append(Skill(title: "Backflip", body: [], categories: [], completedCount: 1003 - i*17))
+        }
+    }
+}
+
+
 // MARK: - Observable Data Containers
 class InProgressSkills: ObservableObject {
     @Published var skills: [InProgressSkill]
@@ -87,5 +130,42 @@ class DiscoverSkills: ObservableObject {
     
     init(skills: [Skill]? = nil) {
         self.skills = skills ?? []
+    }
+}
+
+class ExploreableSkills: ObservableObject {
+    @Published var skills: [Skill]
+    
+    init() {
+        skills = []
+    }
+    
+    init(skills: [Skill]) {
+        self.skills = skills
+    }
+    
+}
+
+class ExploreableCategories: ObservableObject {
+    @Published var categories: [String]
+    
+    init() {
+        categories = []
+    }
+    
+    init(categories: [String]) {
+        self.categories = categories
+    }
+}
+
+class TrendingSkills: ObservableObject {
+    @Published var skills: [Skill]
+    
+    init() {
+        skills =  []
+    }
+    
+    init(skills: [Skill]) {
+        self.skills = skills
     }
 }

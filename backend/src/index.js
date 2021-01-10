@@ -1,7 +1,15 @@
 import express from "express";
 import admin from "firebase-admin";
 import cors from "cors";
-import { addFriend, editProfile, addPost, clap} from "./functions/user.js";
+import { getFriends, addFriend } from "./functions/friend.js";
+import {
+  addPost,
+  addClap,
+  addComment,
+  getNewsfeed,
+  getComments,
+} from "./functions/post.js";
+import { startSkill, finishSkill, getSkills } from "./functions/skill.js";
 
 admin.initializeApp({
   credential: admin.credential.applicationDefault(),
@@ -23,34 +31,108 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.post("/friend", (req, res) => {
-  const { userID, friendID } = req.body;
-  addFriend(db, userID, friendID);
-  res.send("You've added a friend!");
-});
-
-app.post("/profile", (req, res) => {
-  const { userID, interests, biography } = req.body;
-  editProfile(db, userID, interests, biography);
-  res.send("Profile edited.");
-});
-
-app.post("/skill", (req, res) => {
-  const { userID, skillname, picture } = req.body;
-});
-
-app.post("/post", async (req, res) => {
-  const {userID, title, tags, skill, post} = req.body;
-  const postID = await addPost(db, userID, title, tags, skill, post);
+app.get("/friend/:userID", async (req, res) => {
+  const { userID } = req.params;
+  const friends = await getFriends(db, userID);
   res.send({
-    postID: postID
+    friends: friends,
   });
 });
 
-app.post("/clap", (req, res) => {
-  const {userID, clapperID, postID} = req.body;
-  clap(db, userID, clapperID, postID);
-  res.send("Clap received!");
+app.get("/newsfeed/:userID", async (req, res) => {
+  const { userID } = req.params;
+  const posts = await getNewsfeed(db, userID);
+  res.send({
+    posts: posts,
+  });
+});
+
+app.get("/comments/:posterID/:postID", async (req, res) => {
+  const { posterID, postID } = req.params;
+  const comments = await getComments(db, posterID, postID);
+  res.send({
+    comments: comments,
+  });
+});
+
+app.get("/skills/:userID", async (req, res) => {
+  const { userID } = req.params;
+  const skills = await getSkills(db, userID);
+  res.send({
+    skills: skills,
+  });
+});
+
+app.post("/friend", async (req, res) => {
+  const { userID, friendID } = req.body;
+  await addFriend(db, userID, friendID);
+  res.send({
+    success: true,
+  });
+});
+
+app.post("/post", async (req, res) => {
+  const { userID, picture, content, title, tags } = req.body;
+  const [id, timestamp] = await addPost(
+    db,
+    userID,
+    picture,
+    content,
+    title,
+    tags
+  );
+  console.log(timestamp);
+  res.send({
+    postID: id,
+    postedAt: timestamp,
+  });
+});
+
+app.post("/clap", async (req, res) => {
+  const { posterID, postID } = req.body;
+  await addClap(db, posterID, postID);
+  res.send({
+    success: true,
+  });
+});
+
+app.post("/comment", async (req, res) => {
+  const { commenterID, comment, posterID, postID } = req.body;
+  const [id, timestamp] = await addComment(
+    db,
+    commenterID,
+    comment,
+    posterID,
+    postID
+  );
+  res.send({
+    commentID: id,
+    postedAt: timestamp,
+  });
+});
+
+app.post("/skill/start", async (req, res) => {
+  const { userID, skill } = req.body;
+  const timestamp = await startSkill(db, userID, skill);
+  res.send({
+    startedAt: timestamp,
+  });
+});
+
+app.post("/skill/finish", async (req, res) => {
+  const { userID, skill, picture, title, shared, content } = req.body;
+  const timestamp = await finishSkill(
+    db,
+    userID,
+    skill,
+    picture,
+    title,
+    content,
+    shared
+  );
+  res.send({
+    finishedAt: timestamp,
+  });
 });
 
 app.listen(8080);
