@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20D8D3B425AA9E5300D12719 /* SkillDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8D3B325AA9E5300D12719 /* SkillDetailView.swift */; };
 		E9A407E625AA53610073C12A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A407E525AA53610073C12A /* AppDelegate.swift */; };
 		E9A407E825AA53610073C12A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A407E725AA53610073C12A /* SceneDelegate.swift */; };
 		E9A407EA25AA53610073C12A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A407E925AA53610073C12A /* ContentView.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20D8D3B325AA9E5300D12719 /* SkillDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailView.swift; sourceTree = "<group>"; };
 		E9A407E225AA53610073C12A /* nwHacks2021.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nwHacks2021.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A407E525AA53610073C12A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9A407E725AA53610073C12A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20D8D3B225AA9E2500D12719 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				20D8D3B325AA9E5300D12719 /* SkillDetailView.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		E9A407D925AA53610073C12A = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +162,7 @@
 		E9C8C03025AA6565005B2580 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				20D8D3B225AA9E2500D12719 /* Other */,
 				E9C8C03425AA6589005B2580 /* Profile */,
 				E9C8C03325AA6580005B2580 /* Social */,
 				E9C8C03225AA657A005B2580 /* Explore */,
@@ -341,6 +352,7 @@
 				E9C8C03625AA65AE005B2580 /* HomeView.swift in Sources */,
 				E9C8C04725AA75B7005B2580 /* InProgressCellView.swift in Sources */,
 				E9C8C03F25AA7297005B2580 /* Skill.swift in Sources */,
+				20D8D3B425AA9E5300D12719 /* SkillDetailView.swift in Sources */,
 				E9C8C05025AA7935005B2580 /* DateUtils.swift in Sources */,
 				E9A407E825AA53610073C12A /* SceneDelegate.swift in Sources */,
 				E9A407EA25AA53610073C12A /* ContentView.swift in Sources */,
