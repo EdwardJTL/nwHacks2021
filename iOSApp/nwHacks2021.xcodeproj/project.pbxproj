@@ -50,10 +50,10 @@
 
 /* Begin PBXFileReference section */
 		20D8D3B325AA9E5300D12719 /* SkillDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailView.swift; sourceTree = "<group>"; };
-		20D8D3C125AAB03E00D12719 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExploreView.swift; path = nwHacks2021/Views/Other/ExploreView.swift; sourceTree = SOURCE_ROOT; };
-		20D8D3C925AAB4D700D12719 /* TrendingSkillCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrendingSkillCellView.swift; path = nwHacks2021/Views/Other/TrendingSkillCellView.swift; sourceTree = SOURCE_ROOT; };
-		20D8D3D125AAB91500D12719 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchBarView.swift; path = nwHacks2021/Views/Other/SearchBarView.swift; sourceTree = SOURCE_ROOT; };
-		20D8D3D625AAD16A00D12719 /* ExploredSkillCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExploredSkillCellView.swift; path = nwHacks2021/Views/Other/ExploredSkillCellView.swift; sourceTree = SOURCE_ROOT; };
+		20D8D3C125AAB03E00D12719 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExploreView.swift; path = nwHacks2021/Views/Explore/ExploreView.swift; sourceTree = SOURCE_ROOT; };
+		20D8D3C925AAB4D700D12719 /* TrendingSkillCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrendingSkillCellView.swift; path = nwHacks2021/Views/Explore/TrendingSkillCellView.swift; sourceTree = SOURCE_ROOT; };
+		20D8D3D125AAB91500D12719 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchBarView.swift; path = nwHacks2021/Views/Explore/SearchBarView.swift; sourceTree = SOURCE_ROOT; };
+		20D8D3D625AAD16A00D12719 /* ExploredSkillCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExploredSkillCellView.swift; path = nwHacks2021/Views/Explore/ExploredSkillCellView.swift; sourceTree = SOURCE_ROOT; };
 		E9A407E225AA53610073C12A /* nwHacks2021.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nwHacks2021.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A407E525AA53610073C12A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9A407E725AA53610073C12A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +110,17 @@
 				20D8D3B325AA9E5300D12719 /* SkillDetailView.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		20D8D3E425AAD6FB00D12719 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				20D8D3C125AAB03E00D12719 /* ExploreView.swift */,
+				20D8D3D625AAD16A00D12719 /* ExploredSkillCellView.swift */,
+				20D8D3D125AAB91500D12719 /* SearchBarView.swift */,
+				20D8D3C925AAB4D700D12719 /* TrendingSkillCellView.swift */,
+			);
+			path = Explore;
 			sourceTree = "<group>";
 		};
 		E9A407D925AA53610073C12A = {
@@ -180,8 +191,8 @@
 			children = (
 				20D8D3B225AA9E2500D12719 /* Other */,
 				E9C8C03425AA6589005B2580 /* Profile */,
+				20D8D3E425AAD6FB00D12719 /* Explore */,
 				E9C8C03325AA6580005B2580 /* Social */,
-				E9C8C03225AA657A005B2580 /* Explore */,
 				E9C8C03125AA6573005B2580 /* Home */,
 			);
 			path = Views;
@@ -195,17 +206,6 @@
 				E9C8C05D25AA8871005B2580 /* DiscoverSkillCellView.swift */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		E9C8C03225AA657A005B2580 /* Explore */ = {
-			isa = PBXGroup;
-			children = (
-				20D8D3C125AAB03E00D12719 /* ExploreView.swift */,
-				20D8D3D625AAD16A00D12719 /* ExploredSkillCellView.swift */,
-				20D8D3D125AAB91500D12719 /* SearchBarView.swift */,
-				20D8D3C925AAB4D700D12719 /* TrendingSkillCellView.swift */,
-			);
-			path = Explore;
 			sourceTree = "<group>";
 		};
 		E9C8C03325AA6580005B2580 /* Social */ = {
