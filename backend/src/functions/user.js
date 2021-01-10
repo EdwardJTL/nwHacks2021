@@ -1,3 +1,5 @@
+import {v4 as uuidv4} from "uuid";
+
 const addFriend = (db, userID, friendID) => {
   const ref = db.ref(`users/${userID}/friends`);
   ref.push(friendID);
@@ -22,14 +24,17 @@ const addSkill = (db, userID, skillname, picture) => {
     });
 };
 
-const addPost = (db, userID, title, tags, skill, post) => {
+const addPost = async (db, userID, title, tags, skill, post) => {
   const ref = db.ref(`users/${userID}/posts`);
-  ref.push({
+  const id = uuidv4();
+  await ref.push({
+    postID: id,
     title: title,
     tags: tags,
     skill: skill,
     post: post,
   });
+  return id;
 }
 
 

@@ -39,10 +39,12 @@ app.post("/skill", (req, res) => {
   const { userID, skillname, picture } = req.body;
 });
 
-app.post("/post", (req, res) => {
+app.post("/post", async (req, res) => {
   const {userID, title, tags, skill, post} = req.body;
-  addPost(db, userID, title, tags, skill, post);
-  res.send("Post added.");
+  const postID = await addPost(db, userID, title, tags, skill, post);
+  res.send({
+    postID: postID
+  });
 });
 
 app.listen(8080);
