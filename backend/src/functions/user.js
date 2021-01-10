@@ -13,7 +13,7 @@ const editProfile = (db, userID, interests, biography) => {
 
 const addSkill = (db, userID, skillname, picture) => {
   const ref = db.ref(`users/${userID}/skills`);
-  ref
+  ref //todo
     .orderByChild("skillname")
     .equalTo(skillname)
     .once("value")
@@ -22,4 +22,16 @@ const addSkill = (db, userID, skillname, picture) => {
     });
 };
 
-export { addFriend, editProfile };
+const addPost = (db, userID, title, tags, skill, post) => {
+  const ref = db.ref(`users/${userID}/posts`);
+  ref.push({
+    title: title,
+    tags: tags,
+    skill: skill,
+    post: post,
+  });
+}
+
+
+
+export { addFriend, editProfile, addPost };

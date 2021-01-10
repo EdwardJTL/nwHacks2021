@@ -1,7 +1,7 @@
 import express from "express";
 import admin from "firebase-admin";
 import cors from "cors";
-import { addFriend, editProfile } from "./functions/user.js";
+import { addFriend, editProfile, addPost } from "./functions/user.js";
 
 admin.initializeApp({
   credential: admin.credential.applicationDefault(),
@@ -26,17 +26,23 @@ app.use(function (req, res, next) {
 app.post("/friend", (req, res) => {
   const { userID, friendID } = req.body;
   addFriend(db, userID, friendID);
-  res.send("ayy lmao");
+  res.send("You've added a friend!");
 });
 
 app.post("/profile", (req, res) => {
   const { userID, interests, biography } = req.body;
   editProfile(db, userID, interests, biography);
-  res.send("ahahahaha");
+  res.send("Profile edited.");
 });
 
 app.post("/skill", (req, res) => {
   const { userID, skillname, picture } = req.body;
+});
+
+app.post("/post", (req, res) => {
+  const {userID, title, tags, skill, post} = req.body;
+  addPost(db, userID, title, tags, skill, post);
+  res.send("Post added.");
 });
 
 app.listen(8080);
