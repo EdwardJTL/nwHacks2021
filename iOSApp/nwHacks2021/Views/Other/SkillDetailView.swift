@@ -14,6 +14,12 @@ struct SkillDetailView: View {
     let posterName: String //TODO replace with user
     @State var learning: Bool
     
+    @State var presentingModalView: Bool = false
+    @State var progressValue: Float = 0.0
+    @State var description: String = ""
+    @State var image: Image? = nil
+    @State var showCaptureImageView: Bool = false
+    
     var body: some View {
         ZStack {
             Color.blue
@@ -91,6 +97,7 @@ struct SkillDetailView: View {
                                 //TODO update backend to indicate user has completed this skill
                                 
                                 self.inProgressSkill!.completed = true
+                                presentingModalView = true
 
                             })
                             .buttonStyle(GradientBackgroundStyle(startColor: Color.yellow, endColor: Color.green))
@@ -101,19 +108,117 @@ struct SkillDetailView: View {
                                     .foregroundColor(.white)
                                     .offset(y:10)
                                 
-                            } else {  // this is one of the user's learned skills
-                                //Text("You've mastered this skill!").font(.title)
-                                //    .foregroundColor(.green)
-                                //    .fontWeight(.bold)
+                            } else {  // this is one of the user's learned skills.
                             }
                            
                         }
                     }
                 }
             }
-        }
+        }.sheet(isPresented: $presentingModalView, content: {
+            
+            VStack {
+                Text("CONGRATULATIONS!")
+                    .foregroundColor(.pink)
+                    .fontWeight(.bold)
+                    .font(.largeTitle)
+                ProgressBar(value: $progressValue).frame(height: 20)
+                
+                TextField("Share your experience...", text: $description, onCommit: {
+                    progressValue += 0.50 //WARNING
+                })
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .frame(height: 100)
+                
+                Button(action: {
+                    progressValue += 0.50 //WARNING - delay somehow?
+                    self.showCaptureImageView.toggle()
+                                }) {
+                                    Text("Choose photo/video")
+                                }
+                                image?.resizable()
+                                  .frame(height: 250)
+                                    .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                                 // .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                                 // .shadow(radius: 10)
+                                    .padding()
+                
+                if (showCaptureImageView) {
+                        CaptureImageView(isShown: $showCaptureImageView, image: $image)
+                    }
+                
+                Spacer()
+                
+                Button("Share With Friends", action: {
+                    presentingModalView = false
+                    //TODO set to public
+                })
+                .buttonStyle(GradientBackgroundStyle(startColor: Color.orange, endColor: Color.purple))
+                .frame(height: 60)
+                .disabled(progressValue < 1)
+               // .offset(y: 10)
+                
+                Button("Keep Private", action: {
+                    presentingModalView = false
+                    //TODO set to private
+
+                })
+                .offset(y: 20)
+                .buttonStyle(GradientBackgroundStyle(startColor: Color.gray, endColor: Color.blue))
+                .frame(height: 60)
+                .disabled(progressValue < 1)
+               // .offset(y: 10)
+                
+                Spacer()
+            }
+            .padding()
+            //.background(LinearGradient(gradient: Gradient(colors: [Color.white, Color.yellow]), startPoint: .bottom, endPoint: .top).opacity(0.5))
+        })
+        
     }
     
+}
+
+struct CaptureImageView {
+    
+    /// MARK: - Properties
+    @Binding var isShown: Bool
+    @Binding var image: Image?
+    
+    func makeCoordinator() -> Coordinator {
+      return Coordinator(isShown: $isShown, image: $image)
+    }
+}
+
+class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+  @Binding var isCoordinatorShown: Bool
+  @Binding var imageInCoordinator: Image?
+  init(isShown: Binding<Bool>, image: Binding<Image?>) {
+    _isCoordinatorShown = isShown
+    _imageInCoordinator = image
+  }
+  func imagePickerController(_ picker: UIImagePickerController,
+                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+     guard let unwrapImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+     imageInCoordinator = Image(uiImage: unwrapImage)
+     isCoordinatorShown = false
+  }
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+     isCoordinatorShown = false
+  }
+}
+
+extension CaptureImageView: UIViewControllerRepresentable {
+    func makeUIViewController(context: UIViewControllerRepresentableContext<CaptureImageView>) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.delegate = context.coordinator
+        return picker
+    }
+    
+    func updateUIViewController(_ uiViewController: UIImagePickerController,
+                                context: UIViewControllerRepresentableContext<CaptureImageView>) {
+        
+    }
 }
 
 struct GradientBackgroundStyle: ButtonStyle {
@@ -130,6 +235,24 @@ struct GradientBackgroundStyle: ButtonStyle {
             .cornerRadius(25)
             .shadow(radius: 10)
             .font(.title)
+    }
+}
+
+struct ProgressBar: View {
+    @Binding var value: Float
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                Rectangle().frame(width: geometry.size.width , height: geometry.size.height)
+                    .opacity(0.3)
+                    .foregroundColor(Color(UIColor.systemTeal))
+                
+                Rectangle().frame(width: min(CGFloat(self.value)*geometry.size.width, geometry.size.width), height: geometry.size.height)
+                    .foregroundColor(Color(UIColor.systemBlue))
+                    .animation(.linear)
+            }.cornerRadius(45.0)
+        }
     }
 }
 
