@@ -1,3 +1,4 @@
+import { convertTimestampToDate } from "./helper.js";
 import { addPost } from "./post.js";
 
 const startSkill = async (db, userID, skill) => {
@@ -14,6 +15,7 @@ const startSkill = async (db, userID, skill) => {
   await ref.push({
     skill: skill,
     startedAt: timestamp,
+    completed: false,
   });
   return timestamp;
 };
@@ -45,6 +47,7 @@ const finishSkill = async (
       skillRef.forEach((sr) => {
         ref.child(sr.key).update({
           finishedAt: timestamp,
+          completed: true,
         });
       });
       return timestamp;
@@ -56,7 +59,10 @@ const getSkills = async (db, userID) => {
   return await ref.once("value").then(async (snapshot) => {
     const skills = [];
     await snapshot.forEach((skill) => {
-      skills.push(skill.toJSON());
+      skill = skill.toJSON();
+      skill["startedAt"] = convertTimestampToDate(skill["startedAt"]);
+      skill["finishedAt"] = convertTimestampToDate(skill["finishedAt"]);
+      skills.push(skill);
     });
     return skills;
   });

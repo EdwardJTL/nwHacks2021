@@ -6,10 +6,12 @@ import {
   addPost,
   addClap,
   addComment,
+  getPosts,
   getNewsfeed,
   getComments,
 } from "./functions/post.js";
 import { startSkill, finishSkill, getSkills } from "./functions/skill.js";
+import { editProfile, getProfile } from "./functions/user.js";
 
 admin.initializeApp({
   credential: admin.credential.applicationDefault(),
@@ -60,6 +62,20 @@ app.get("/skills/:userID", async (req, res) => {
   const skills = await getSkills(db, userID);
   res.send({
     skills: skills,
+  });
+});
+
+app.get("/profile/:userID", async (req, res) => {
+  const { userID } = req.params;
+  const profile = await getProfile(db, userID);
+  res.send(profile);
+});
+
+app.get("/posts/:userID", async (req, res) => {
+  const { userID } = req.params;
+  const posts = await getPosts(db, userID);
+  res.send({
+    posts: posts,
   });
 });
 
@@ -128,10 +144,18 @@ app.post("/skill/finish", async (req, res) => {
     picture,
     title,
     content,
-    shared
+    true
   );
   res.send({
     finishedAt: timestamp,
+  });
+});
+
+app.post("/profile", async (req, res) => {
+  const { userID, name, biography, interests } = req.body;
+  await editProfile(db, userID, name, biography, interests);
+  res.send({
+    success: true,
   });
 });
 

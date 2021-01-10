@@ -1,4 +1,9 @@
-import { getID, getTimestamp } from "./helper.js";
+import {
+  convertTimestampToDate,
+  getID,
+  getTimestamp,
+  initializeSkillMap,
+} from "./helper.js";
 import { getFriends } from "./friend.js";
 
 const addPost = async (db, userID, picture, content, title, tags, shared) => {
@@ -14,6 +19,7 @@ const addPost = async (db, userID, picture, content, title, tags, shared) => {
     tags: tags,
     shared: shared,
     postedAt: timestamp,
+    skill: initializeSkillMap()[tags[0]],
   });
   return [id, timestamp];
 };
@@ -70,8 +76,11 @@ const getPosts = async (db, userID) => {
         tags.push(post["tags"][key]);
       }
       post["tags"] = tags;
+      post["posterID"] = userID;
+      post["postedAt"] = convertTimestampToDate(post["postedAt"]);
       posts.push(post);
     });
+    posts.sort((a, b) => b["postedAt"] - a["postedAt"]);
     return posts;
   });
 };
@@ -85,6 +94,7 @@ const getNewsfeed = async (db, userID) => {
     console.log(friendPosts);
     posts = posts.concat(friendPosts);
   }
+  posts.sort((a, b) => b["postedAt"] - a["postedAt"]);
   return posts;
 };
 
@@ -99,11 +109,15 @@ const getComments = async (db, posterID, postID) => {
       await post.forEach((postRef) => {
         const commentJSON = postRef.toJSON()["comments"];
         for (const key in commentJSON) {
+          commentJSON[key]["postedAt"] = convertTimestampToDate(
+            commentJSON[key]["postedAt"]
+          );
           comments.push(commentJSON[key]);
         }
       });
+      comments.sort((a, b) => b["postedAt"] - a["postedAt"]);
       return comments;
     });
 };
 
-export { addPost, addClap, addComment, getNewsfeed, getComments };
+export { addPost, addClap, addComment, getPosts, getNewsfeed, getComments };
