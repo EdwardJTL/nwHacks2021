@@ -2,6 +2,7 @@ import express from "express";
 import admin from "firebase-admin";
 import cors from "cors";
 import { addFriend, editProfile, addPost } from "./functions/user.js";
+import { clap } from "./functions/skill.js";
 
 admin.initializeApp({
   credential: admin.credential.applicationDefault(),
@@ -45,6 +46,12 @@ app.post("/post", async (req, res) => {
   res.send({
     postID: postID
   });
+});
+
+app.post("/clap", (req, res) => {
+  const {userID, clapperID, postID} = req.body;
+  clap(db, userID, clapperID, postID);
+  res.send("Clap received!");
 });
 
 app.listen(8080);

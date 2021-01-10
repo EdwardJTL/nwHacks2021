@@ -15,7 +15,7 @@ const editProfile = (db, userID, interests, biography) => {
 
 const addSkill = (db, userID, skillname, picture) => {
   const ref = db.ref(`users/${userID}/skills`);
-  ref //todo
+  ref //todo!!!
     .orderByChild("skillname")
     .equalTo(skillname)
     .once("value")

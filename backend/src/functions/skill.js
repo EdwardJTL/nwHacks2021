@@ -1,7 +1,6 @@
+const clap = (db, userID, clapperID, postID) => {
+    const ref = db.ref(`users/${userID}/posts/${postID}`);
+    ref.push(clapperID);
+};
 
-
-const clap = (db, userID, posts) => {
-    const ref = db.ref(`users/${userID}/friends`);
-    ref.push(friendID);
-  };
-  
+export { clap };
