@@ -29,6 +29,7 @@
 		E9C8C0A525AAD82D005B2580 /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C0A425AAD82D005B2580 /* StoryView.swift */; };
 		E9C8C0B025AAEF28005B2580 /* PostCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C0AF25AAEF27005B2580 /* PostCardView.swift */; };
 		E9C8C0B825AAFC25005B2580 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C0B725AAFC25005B2580 /* UIScreen+Extension.swift */; };
+		E9C8C0C925AB0C2E005B2580 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C0C825AB0C2E005B2580 /* PostDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		E9C8C0A425AAD82D005B2580 /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		E9C8C0AF25AAEF27005B2580 /* PostCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCardView.swift; sourceTree = "<group>"; };
 		E9C8C0B725AAFC25005B2580 /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
+		E9C8C0C825AB0C2E005B2580 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 				E9C8C08F25AAC5E0005B2580 /* SocialView.swift */,
 				E9C8C0A425AAD82D005B2580 /* StoryView.swift */,
 				E9C8C0AF25AAEF27005B2580 /* PostCardView.swift */,
+				E9C8C0C825AB0C2E005B2580 /* PostDetailView.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				E9C8C0B825AAFC25005B2580 /* UIScreen+Extension.swift in Sources */,
 				E9C8C03F25AA7297005B2580 /* Skill.swift in Sources */,
 				20D8D3B425AA9E5300D12719 /* SkillDetailView.swift in Sources */,
+				E9C8C0C925AB0C2E005B2580 /* PostDetailView.swift in Sources */,
 				E9C8C0B025AAEF28005B2580 /* PostCardView.swift in Sources */,
 				E9C8C05025AA7935005B2580 /* DateUtils.swift in Sources */,
 				E9A407E825AA53610073C12A /* SceneDelegate.swift in Sources */,

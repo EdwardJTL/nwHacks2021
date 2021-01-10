@@ -45,7 +45,7 @@ struct SkillDetailView: View {
                 
                 ScrollView {
                     VStack {
-                        Text(skill.description ?? "No description provided.")
+                        Text(skill.description)
                             .font(.body)
                             .fixedSize(horizontal: false, vertical: true)
                             .multilineTextAlignment(.leading)

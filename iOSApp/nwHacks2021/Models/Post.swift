@@ -55,13 +55,36 @@ struct PreviewStories {
     }
 }
 
+struct PreviewComments {
+    var data: [Comment]
+    
+    init() {
+        data = []
+        let user = User.defaultUser()
+        
+        for i in 0..<15 {
+            data.append(Comment(user: user, body: "Tis is text comment \(i)", timestamp: Date()))
+        }
+    }
+}
+
+struct PreviewPosts {
+    var data: [Post]
+    
+    init() {
+        data = []
+        data.append(PreviewCreatedPost().data)
+        data.append(PreviewStartedPost().data)
+        data.append(PreviewCompletedPost().data)
+    }
+}
+
 struct PreviewCreatedPost {
     var data: Post
     
     init() {
         let user = User.defaultUser()
         let skill = PreviewSkill().data
-        let comment = Comment(user: user, body: "This is a test comment", timestamp: Date())
         
         data = Post(user: user,
                     skill: skill,
@@ -69,7 +92,7 @@ struct PreviewCreatedPost {
                     description: "",
                     image: nil,
                     videoURL: nil,
-                    comments: [comment],
+                    comments: PreviewComments().data,
                     clapCount: 10,
                     creationDate: Date(),
                     startDate: nil,
@@ -83,7 +106,6 @@ struct PreviewStartedPost {
     init() {
         let user = User.defaultUser()
         let skill = PreviewSkill().data
-        let comment = Comment(user: user, body: "This is a test comment", timestamp: Date())
         
         data = Post(user: user,
                     skill: skill,
@@ -91,7 +113,7 @@ struct PreviewStartedPost {
                     description: "",
                     image: nil,
                     videoURL: nil,
-                    comments: [comment],
+                    comments: PreviewComments().data,
                     clapCount: 10,
                     creationDate: Date(),
                     startDate: Date(),
@@ -105,7 +127,6 @@ struct PreviewCompletedPost{
     init() {
         let user = User.defaultUser()
         let skill = PreviewSkill().data
-        let comment = Comment(user: user, body: "This is a test comment", timestamp: Date())
         
         data = Post(user: user,
                     skill: skill,
@@ -113,7 +134,7 @@ struct PreviewCompletedPost{
                     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu arcu nec mi posuere rutrum quis nec elit. Phasellus blandit viverra molestie. Nam erat metus, fermentum tincidunt fringilla et, gravida id erat. Donec euismod magna lectus, et faucibus augue accumsan sed. Aenean accumsan tincidunt vestibulum. Vivamus sit amet quam eget eros congue scelerisque non ac mauris. Nulla fringilla, justo nec sagittis scelerisque, neque justo tempus tellus, vel suscipit mauris metus vulputate turpis. In vitae neque erat. Sed aliquet rutrum leo, nec blandit enim malesuada quis. Sed suscipit eget felis ac egestas. Integer iaculis nisl rutrum, semper elit eget, volutpat lacus. Ut ut massa mi. Donec efficitur varius convallis. Suspendisse ac tincidunt libero.",
                     image: Image("backflip"),
                     videoURL: nil,
-                    comments: [comment],
+                    comments: PreviewComments().data,
                     clapCount: 10,
                     creationDate: Date(),
                     startDate: Date(),
@@ -131,9 +152,19 @@ class Stories: ObservableObject {
 }
 
 class PostData: ObservableObject {
-    @Published var data: Post
+    @Published var data: [Post]
+    @Published var claps: [Bool]
+    @Published var comments: [String]
     
-    init(post: Post) {
-        self.data = post
+    init(posts: [Post]? = nil) {
+        if let safePosts = posts {
+            self.data = safePosts
+            self.claps = [Bool](repeating: false, count: safePosts.count)
+            self.comments = [String](repeating: "", count: safePosts.count)
+        } else {
+            self.data = []
+            self.claps = []
+            self.comments = []
+        }
     }
 }

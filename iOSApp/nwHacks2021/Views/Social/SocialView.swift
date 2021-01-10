@@ -12,6 +12,7 @@ import SwiftUI
 struct SocialView: View {
     @EnvironmentObject var storiesHolder: Stories
     @EnvironmentObject var currentUser: UserData
+    @EnvironmentObject var posts: PostData
     @State var showingStory = false
     @State var currentStory: Story!
     
@@ -28,6 +29,7 @@ struct SocialView: View {
         ZStack {
             // Main interface
             VStack {
+                // Stories
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: storySpacing) {
                         Button(action: {
@@ -105,7 +107,19 @@ struct SocialView: View {
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     LazyVStack {
-                        
+                        ForEach(posts.data.indices) { idx in
+                            NavigationLink(
+                                destination: PostDetailView(
+                                    clapped: $posts.claps[idx],
+                                    comment: $posts.comments[idx],
+                                    post: posts.data[idx]),
+                                label: {
+                                PostCardView(clapped: $posts.claps[idx],
+                                             comment: $posts.comments[idx],
+                                             post: posts.data[idx])
+                                    .padding()
+                                })
+                        }
                     }
                 }
             }
@@ -160,8 +174,13 @@ struct StoryIconView: View {
 
 struct SocialView_Previews: PreviewProvider {
     static var previews: some View {
-        SocialView()
+        NavigationView{
+            SocialView()
+                .navigationTitle("")
+                .navigationBarHidden(true)
+        }
             .environmentObject(UserData(user: PreviewUser().data))
             .environmentObject(Stories(stories: PreviewStories().data))
+            .environmentObject(PostData(posts: PreviewPosts().data))
     }
 }
