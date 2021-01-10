@@ -88,8 +88,10 @@ struct DiscoverSkillCellView: View {
             Spacer()
         }
         .padding(10)
-        .background(Color.blue)
+        .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color(red: 20/255, green: 93/255, blue: 200/255)]), startPoint: .leading, endPoint: .trailing).opacity(1))
         .cornerRadius(roundedCorner, antialiased: true)
+        .shadow(color: Color.blue.opacity(0.5), radius: 6, x: 2, y: 6)
+        
     }
 }
 

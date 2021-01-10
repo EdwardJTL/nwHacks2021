@@ -37,7 +37,7 @@ struct ExploredSkillCellView: View {
             }
         }
         .aspectRatio(1, contentMode: .fit)
-        .cornerRadius(10.0, antialiased: true)
+        .cornerRadius(8.0, antialiased: true)
     }
 }
 

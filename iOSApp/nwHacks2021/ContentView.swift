@@ -46,7 +46,8 @@ struct ContentView: View {
         TabView(selection: $selection) {
             NavigationView {
                 HomeView()
-                    .navigationTitle("Home")
+                   // .offset(y: -60)
+                  //  .navigationTitle("Home")
             }
                 .tabItem {
                     Image(systemName: "house.fill")
