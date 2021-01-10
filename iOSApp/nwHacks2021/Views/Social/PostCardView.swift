@@ -25,6 +25,17 @@ struct PostCardView: View {
     
     let sendIconHeight: CGFloat = 30
     
+    var titleFiller: String {
+        switch post.type {
+        case .completed:
+            return "Today, I picked up how to"
+        case .created:
+            return "Hey! Here is how to"
+        case .started:
+            return "Today, I checked out how to"
+        }
+    }
+    
     var body: some View {
         VStack {
             // Pfp, name, clap
@@ -71,51 +82,7 @@ struct PostCardView: View {
             
             Divider()
             
-            // Text and Media
-            VStack(alignment: .center) {
-                
-                // Skill
-                HStack{
-                    VStack(alignment: .leading) {
-                        Text("Today, I worked on")
-                            .font(.title3)
-                            .foregroundColor(.label)
-                            .fontWeight(.bold)
-                        Text(post.inProgressSkill.skill.title)
-                            .font(.title)
-                            .foregroundColor(.blue)
-                            .fontWeight(.heavy)
-                    }
-                    Spacer()
-                }
-                .padding(.bottom, 10)
-                
-                Text(post.description)
-                    .foregroundColor(.label)
-                    .font(.body)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .multilineTextAlignment(.leading)
-                    .allowsTightening(true)
-                    .lineLimit(3)
-                    .truncationMode(.tail)
-            
-                //TODO right now this is a static picture but it should be playable media such as a video
-                Group {
-                    if let safeImage = post.image {
-                        safeImage
-                            .resizable()
-                    } else {
-                        Image("backflip")
-                            .resizable()
-                    }
-                }
-                .aspectRatio(1, contentMode: .fill)
-                .frame(width: UIScreen.screenWidth * contentWidthRatio)
-                .clipShape(RoundedRectangle(cornerRadius: 25))
-                
-            }
-            .frame(width: UIScreen.screenWidth * contentWidthRatio)
-            .padding()
+            content
             
             Divider()
             
@@ -154,11 +121,99 @@ struct PostCardView: View {
         .shadow(radius: shadowRadius)
         
     }
+    
+    var content: some View {
+        // Text and Media
+        VStack(alignment: .center) {
+            
+            // Skill
+            HStack{
+                VStack(alignment: .leading) {
+                    Text(titleFiller)
+                        .font(.title3)
+                        .foregroundColor(.label)
+                        .fontWeight(.bold)
+                    Text(post.skill.title)
+                        .font(.title)
+                        .foregroundColor(.blue)
+                        .fontWeight(.heavy)
+                }
+                Spacer()
+            }
+            .padding(.bottom, 10)
+            
+            Group {
+                if post.type == Post.PostType.created {
+                    HStack {
+                        Text(post.skill.description)
+                            .foregroundColor(.label)
+                            .font(.body)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .multilineTextAlignment(.leading)
+                            .allowsTightening(true)
+                            .lineLimit(3)
+                            .truncationMode(.tail)
+                        Spacer()
+                    }
+                    
+                    //TODO right now this is a static picture but it should be playable media such as a video
+                    Group {
+                        if let safeImage = post.skill.image {
+                            safeImage
+                                .resizable()
+                        } else {
+                            Image("backflip")
+                                .resizable()
+                        }
+                    }
+                    .aspectRatio(1, contentMode: .fill)
+                    .frame(width: UIScreen.screenWidth * contentWidthRatio)
+                    .clipShape(RoundedRectangle(cornerRadius: 25))
+                } else if post.type == Post.PostType.started {
+                    EmptyView()
+                } else if post.type == Post.PostType.completed {
+                    HStack {
+                        Text(post.description)
+                            .foregroundColor(.label)
+                            .font(.body)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .multilineTextAlignment(.leading)
+                            .allowsTightening(true)
+                            .lineLimit(3)
+                            .truncationMode(.tail)
+                        Spacer()
+                    }
+                
+                    //TODO right now this is a static picture but it should be playable media such as a video
+                    Group {
+                        if let safeImage = post.image {
+                            safeImage
+                                .resizable()
+                        } else {
+                            Image("backflip")
+                                .resizable()
+                        }
+                    }
+                    .aspectRatio(1, contentMode: .fill)
+                    .frame(width: UIScreen.screenWidth * contentWidthRatio)
+                    .clipShape(RoundedRectangle(cornerRadius: 25))
+                }
+            }
+        }
+        .frame(width: UIScreen.screenWidth * contentWidthRatio)
+        .padding()
+    }
 }
 
 struct PostCardView_Previews: PreviewProvider {
     static var previews: some View {
-        PostCardView(post: PreviewPost().data)
-            .environmentObject(UserData(user: User.defaultUser()))
+        Group {
+            PostCardView(post: PreviewCreatedPost().data)
+                .environmentObject(UserData(user: User.defaultUser()))
+            PostCardView(post: PreviewStartedPost().data)
+                .environmentObject(UserData(user: User.defaultUser()))
+            PostCardView(post: PreviewCompletedPost().data)
+                .environmentObject(UserData(user: User.defaultUser()))
+        }
     }
 }

@@ -47,7 +47,7 @@ struct PreviewUser {
     init() {
         data = User.defaultUser()
         for _ in 0..<40 {
-            let post = PreviewPost().data
+            let post = PreviewCompletedPost().data
             data.posts.append(post)
         }
     }

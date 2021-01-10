@@ -131,7 +131,7 @@ struct ProfileSkillCellView: View {
         ZStack(alignment: .bottomLeading) {
             ZStack(alignment: .topTrailing) {
                 Group {
-                    if let safeImage = post.inProgressSkill.skill.image {
+                    if let safeImage = post.skill.image {
                         safeImage
                             .resizable()
                     } else {
@@ -157,7 +157,7 @@ struct ProfileSkillCellView: View {
                 )
             }
             LinearGradient(gradient: Gradient(colors: [.clear, Color.black.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
-            Text(toDateString(from: post.completionDate, format: "MMM d"))
+            Text(toDateString(from: post.completionDate!, format: "MMM d"))
                 .font(.subheadline)
                 .foregroundColor(.white)
                 .padding(5)
