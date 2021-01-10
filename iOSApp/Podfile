@@ -1,0 +1,21 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'nwHacks2021' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for nwHacks2021
+
+  pod 'Alamofire', '~> 5.2'
+
+  target 'nwHacks2021Tests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'nwHacks2021UITests' do
+    # Pods for testing
+  end
+
+end

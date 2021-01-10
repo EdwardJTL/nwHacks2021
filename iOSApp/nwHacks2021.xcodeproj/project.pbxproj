@@ -12,6 +12,8 @@
 		20D8D3CA25AAB4D700D12719 /* TrendingSkillCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8D3C925AAB4D700D12719 /* TrendingSkillCellView.swift */; };
 		20D8D3D225AAB91500D12719 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8D3D125AAB91500D12719 /* SearchBarView.swift */; };
 		20D8D3D725AAD16A00D12719 /* ExploredSkillCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8D3D625AAD16A00D12719 /* ExploredSkillCellView.swift */; };
+		6F78E5ECFD36A76FFB46E481 /* Pods_nwHacks2021_nwHacks2021UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5875D962BA9584B52F0C7B08 /* Pods_nwHacks2021_nwHacks2021UITests.framework */; };
+		839A2E4C69A1326F3BF15FEB /* Pods_nwHacks2021.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3290CEF0081DF4D2944CAB79 /* Pods_nwHacks2021.framework */; };
 		E9A407E625AA53610073C12A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A407E525AA53610073C12A /* AppDelegate.swift */; };
 		E9A407E825AA53610073C12A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A407E725AA53610073C12A /* SceneDelegate.swift */; };
 		E9A407EA25AA53610073C12A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A407E925AA53610073C12A /* ContentView.swift */; };
@@ -36,6 +38,8 @@
 		E9C8C0C925AB0C2E005B2580 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C0C825AB0C2E005B2580 /* PostDetailView.swift */; };
 		E9C8C0DD25AB6C35005B2580 /* CaptureImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C0DC25AB6C35005B2580 /* CaptureImageView.swift */; };
 		E9C8C0E225AB6C73005B2580 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C0E125AB6C73005B2580 /* ProgressBarView.swift */; };
+		E9C8C0F325AB76A9005B2580 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8C0F225AB76A9005B2580 /* Network.swift */; };
+		F9F60AC651C9315EA3CBF9DC /* Pods_nwHacks2021Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5573915148273CB4FF43048C /* Pods_nwHacks2021Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,11 +60,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13076B8A94E529423198F31A /* Pods-nwHacks2021.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nwHacks2021.debug.xcconfig"; path = "Target Support Files/Pods-nwHacks2021/Pods-nwHacks2021.debug.xcconfig"; sourceTree = "<group>"; };
 		20D8D3B325AA9E5300D12719 /* SkillDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailView.swift; sourceTree = "<group>"; };
 		20D8D3C125AAB03E00D12719 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExploreView.swift; path = nwHacks2021/Views/Explore/ExploreView.swift; sourceTree = SOURCE_ROOT; };
 		20D8D3C925AAB4D700D12719 /* TrendingSkillCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrendingSkillCellView.swift; path = nwHacks2021/Views/Explore/TrendingSkillCellView.swift; sourceTree = SOURCE_ROOT; };
 		20D8D3D125AAB91500D12719 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchBarView.swift; path = nwHacks2021/Views/Explore/SearchBarView.swift; sourceTree = SOURCE_ROOT; };
 		20D8D3D625AAD16A00D12719 /* ExploredSkillCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExploredSkillCellView.swift; path = nwHacks2021/Views/Explore/ExploredSkillCellView.swift; sourceTree = SOURCE_ROOT; };
+		3290CEF0081DF4D2944CAB79 /* Pods_nwHacks2021.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nwHacks2021.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5573915148273CB4FF43048C /* Pods_nwHacks2021Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nwHacks2021Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5875D962BA9584B52F0C7B08 /* Pods_nwHacks2021_nwHacks2021UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nwHacks2021_nwHacks2021UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80796C73982BC6B881BE6595 /* Pods-nwHacks2021-nwHacks2021UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nwHacks2021-nwHacks2021UITests.debug.xcconfig"; path = "Target Support Files/Pods-nwHacks2021-nwHacks2021UITests/Pods-nwHacks2021-nwHacks2021UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B0C2028F6EDE3D567FEB4C93 /* Pods-nwHacks2021Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nwHacks2021Tests.release.xcconfig"; path = "Target Support Files/Pods-nwHacks2021Tests/Pods-nwHacks2021Tests.release.xcconfig"; sourceTree = "<group>"; };
+		BA524AAB94D818E4973ECADE /* Pods-nwHacks2021.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nwHacks2021.release.xcconfig"; path = "Target Support Files/Pods-nwHacks2021/Pods-nwHacks2021.release.xcconfig"; sourceTree = "<group>"; };
+		D9588FD5DD158B21421BF4E0 /* Pods-nwHacks2021Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nwHacks2021Tests.debug.xcconfig"; path = "Target Support Files/Pods-nwHacks2021Tests/Pods-nwHacks2021Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E9A407E225AA53610073C12A /* nwHacks2021.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nwHacks2021.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A407E525AA53610073C12A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9A407E725AA53610073C12A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +103,8 @@
 		E9C8C0C825AB0C2E005B2580 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		E9C8C0DC25AB6C35005B2580 /* CaptureImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureImageView.swift; sourceTree = "<group>"; };
 		E9C8C0E125AB6C73005B2580 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		E9C8C0F225AB76A9005B2580 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		FD2D23BB3741B7ADB6B09F61 /* Pods-nwHacks2021-nwHacks2021UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nwHacks2021-nwHacks2021UITests.release.xcconfig"; path = "Target Support Files/Pods-nwHacks2021-nwHacks2021UITests/Pods-nwHacks2021-nwHacks2021UITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				839A2E4C69A1326F3BF15FEB /* Pods_nwHacks2021.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9F60AC651C9315EA3CBF9DC /* Pods_nwHacks2021Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F78E5ECFD36A76FFB46E481 /* Pods_nwHacks2021_nwHacks2021UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +156,30 @@
 			path = Explore;
 			sourceTree = "<group>";
 		};
+		28F614076B3D641FD07DF342 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3290CEF0081DF4D2944CAB79 /* Pods_nwHacks2021.framework */,
+				5875D962BA9584B52F0C7B08 /* Pods_nwHacks2021_nwHacks2021UITests.framework */,
+				5573915148273CB4FF43048C /* Pods_nwHacks2021Tests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		565AB0A2BC268FC789E6D724 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				13076B8A94E529423198F31A /* Pods-nwHacks2021.debug.xcconfig */,
+				BA524AAB94D818E4973ECADE /* Pods-nwHacks2021.release.xcconfig */,
+				80796C73982BC6B881BE6595 /* Pods-nwHacks2021-nwHacks2021UITests.debug.xcconfig */,
+				FD2D23BB3741B7ADB6B09F61 /* Pods-nwHacks2021-nwHacks2021UITests.release.xcconfig */,
+				D9588FD5DD158B21421BF4E0 /* Pods-nwHacks2021Tests.debug.xcconfig */,
+				B0C2028F6EDE3D567FEB4C93 /* Pods-nwHacks2021Tests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		E9A407D925AA53610073C12A = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +187,8 @@
 				E9A407FB25AA53660073C12A /* nwHacks2021Tests */,
 				E9A4080625AA53670073C12A /* nwHacks2021UITests */,
 				E9A407E325AA53610073C12A /* Products */,
+				565AB0A2BC268FC789E6D724 /* Pods */,
+				28F614076B3D641FD07DF342 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -259,6 +302,7 @@
 				E9C8C04F25AA7935005B2580 /* DateUtils.swift */,
 				E9C8C09C25AAD3FF005B2580 /* Color+Extension.swift */,
 				E9C8C0B725AAFC25005B2580 /* UIScreen+Extension.swift */,
+				E9C8C0F225AB76A9005B2580 /* Network.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -270,9 +314,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9A4080C25AA53670073C12A /* Build configuration list for PBXNativeTarget "nwHacks2021" */;
 			buildPhases = (
+				2D618EFAE64EE0419F0C0406 /* [CP] Check Pods Manifest.lock */,
 				E9A407DE25AA53610073C12A /* Sources */,
 				E9A407DF25AA53610073C12A /* Frameworks */,
 				E9A407E025AA53610073C12A /* Resources */,
+				DFA4F8386384A0ED80F167CB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -287,6 +333,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9A4080F25AA53670073C12A /* Build configuration list for PBXNativeTarget "nwHacks2021Tests" */;
 			buildPhases = (
+				0337E11B9B0A7249F876F06B /* [CP] Check Pods Manifest.lock */,
 				E9A407F425AA53660073C12A /* Sources */,
 				E9A407F525AA53660073C12A /* Frameworks */,
 				E9A407F625AA53660073C12A /* Resources */,
@@ -305,9 +352,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9A4081225AA53670073C12A /* Build configuration list for PBXNativeTarget "nwHacks2021UITests" */;
 			buildPhases = (
+				30AAB8180CC0D907C3452E12 /* [CP] Check Pods Manifest.lock */,
 				E9A407FF25AA53670073C12A /* Sources */,
 				E9A4080025AA53670073C12A /* Frameworks */,
 				E9A4080125AA53670073C12A /* Resources */,
+				42020FCDEDEF16B1C04CF501 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -388,6 +437,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0337E11B9B0A7249F876F06B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-nwHacks2021Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2D618EFAE64EE0419F0C0406 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-nwHacks2021-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		30AAB8180CC0D907C3452E12 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-nwHacks2021-nwHacks2021UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		42020FCDEDEF16B1C04CF501 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-nwHacks2021-nwHacks2021UITests/Pods-nwHacks2021-nwHacks2021UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-nwHacks2021-nwHacks2021UITests/Pods-nwHacks2021-nwHacks2021UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-nwHacks2021-nwHacks2021UITests/Pods-nwHacks2021-nwHacks2021UITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DFA4F8386384A0ED80F167CB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-nwHacks2021/Pods-nwHacks2021-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-nwHacks2021/Pods-nwHacks2021-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-nwHacks2021/Pods-nwHacks2021-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E9A407DE25AA53610073C12A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -403,6 +555,7 @@
 				E9C8C03F25AA7297005B2580 /* Skill.swift in Sources */,
 				20D8D3D225AAB91500D12719 /* SearchBarView.swift in Sources */,
 				20D8D3C225AAB03E00D12719 /* ExploreView.swift in Sources */,
+				E9C8C0F325AB76A9005B2580 /* Network.swift in Sources */,
 				20D8D3CA25AAB4D700D12719 /* TrendingSkillCellView.swift in Sources */,
 				E9C8C0DD25AB6C35005B2580 /* CaptureImageView.swift in Sources */,
 				20D8D3B425AA9E5300D12719 /* SkillDetailView.swift in Sources */,
@@ -581,6 +734,7 @@
 		};
 		E9A4080D25AA53670073C12A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13076B8A94E529423198F31A /* Pods-nwHacks2021.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -602,6 +756,7 @@
 		};
 		E9A4080E25AA53670073C12A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA524AAB94D818E4973ECADE /* Pods-nwHacks2021.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -623,6 +778,7 @@
 		};
 		E9A4081025AA53670073C12A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9588FD5DD158B21421BF4E0 /* Pods-nwHacks2021Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -644,6 +800,7 @@
 		};
 		E9A4081125AA53670073C12A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0C2028F6EDE3D567FEB4C93 /* Pods-nwHacks2021Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -665,6 +822,7 @@
 		};
 		E9A4081325AA53670073C12A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80796C73982BC6B881BE6595 /* Pods-nwHacks2021-nwHacks2021UITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -684,6 +842,7 @@
 		};
 		E9A4081425AA53670073C12A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD2D23BB3741B7ADB6B09F61 /* Pods-nwHacks2021-nwHacks2021UITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
